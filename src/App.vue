@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <Profesor/>
+    <nav>
+      <router-link to="/titulaciones">Titulaciones</router-link> |
+      <router-link to="/profesores">Profesores</router-link>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Profesor from './components/Profesor.vue'
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Profesor
-}
-}
+    //Profesor,
+    //Titulacion
+  },
+};
 </script>
 
 <style>

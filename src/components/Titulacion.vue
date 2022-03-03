@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Lista de Profesores</h1>
+    <h1 class="text-center">Lista de Titulaciones</h1>
     <table class="table table-striped">
       <thead>
         <th>ID</th>
@@ -18,35 +18,27 @@
       </tbody>
     </table>
   </div>
-
-  <div id="otro_componente_prueba">
-    <Titulacion />
-  </div>
 </template>
 
 <script>
-import Profesor_Service from "../services/Profesor_Service";
-import Titulacion from "./Titulacion.vue";
+import Titulacion_Service from "../services/Titulacion_Service";
 
 export default {
-  name: "ProfesorScript",
+  name: "TitulacionScript",
   data() {
     return {
       profesores: [],
     };
   },
-  components: {
-    Titulacion,
-  },
   methods: {
-    getProfesores() {
-      Profesor_Service.getProfesores().then((response) => {
+    getTitulaciones() {
+      Titulacion_Service.getTitulaciones().then((response) => {
         this.profesores = response.data;
       });
     },
   },
   created() {
-    this.getProfesores();
+    this.getTitulaciones();
   },
 };
 </script>
