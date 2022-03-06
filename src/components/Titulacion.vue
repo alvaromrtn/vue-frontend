@@ -4,16 +4,18 @@
     <table class="table table-striped">
       <thead>
         <th>ID</th>
+        <th>CENTRO</th>
+        <th>CODIGO</th>
         <th>NOMBRE</th>
-        <th>APELLIDO</th>
-        <th>CORREO</th>
+        <th>CURSOS</th>
       </thead>
       <tbody>
-        <tr v-for="profesor in profesores" v-bind:key="profesor.id">
-          <td>{{ profesor.id }}</td>
-          <td>{{ profesor.nombre }}</td>
-          <td>{{ profesor.apellidos }}</td>
-          <td>{{ profesor.correo }}</td>
+        <tr v-for="titulacion in titulaciones" v-bind:key="titulacion.id">
+          <td>{{ titulacion.id }}</td>
+          <td>{{ titulacion.centro }}</td>
+          <td>{{ titulacion.codigo }}</td>
+          <td>{{ titulacion.nombre }}</td>
+          <td>{{ titulacion.numeroCursos }}</td>
         </tr>
       </tbody>
     </table>
@@ -27,13 +29,13 @@ export default {
   name: "TitulacionScript",
   data() {
     return {
-      profesores: [],
+      titulaciones: [],
     };
   },
   methods: {
     getTitulaciones() {
       Titulacion_Service.getTitulaciones().then((response) => {
-        this.profesores = response.data;
+        this.titulaciones = response.data;
       });
     },
   },
