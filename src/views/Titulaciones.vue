@@ -10,7 +10,11 @@
         <th>CURSOS</th>
       </thead>
       <tbody>
-        <tr v-for="titulacion in titulaciones" v-bind:key="titulacion.id">
+        <tr
+          v-for="titulacion in titulaciones"
+          v-bind:key="titulacion.id"
+          v-on:click="navegarTitulacion(titulacion.codigo)"
+        >
           <td>{{ titulacion.id }}</td>
           <td>{{ titulacion.centro }}</td>
           <td>{{ titulacion.codigo }}</td>
@@ -37,6 +41,10 @@ export default {
       Titulacion_Service.getTitulaciones().then((response) => {
         this.titulaciones = response.data;
       });
+    },
+    navegarTitulacion(codigo) {
+      var ruta = "/titulacion/" + codigo;
+      window.location.href = ruta;
     },
   },
   created() {
