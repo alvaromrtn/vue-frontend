@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Titulacion_Service from "../services/Titulacion_Service";
+import Asignaturas_Service from "../services/Asignaturas_Service";
 
 export default {
   name: "TitulacionScript",
@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getAsignaturas() {
-      Titulacion_Service.getAsignaturas(this.$route.params.codigo).then(
+      Asignaturas_Service.getAsignaturas(this.$route.params.codigo).then(
         (response) => {
           this.asignaturas = response.data;
         }

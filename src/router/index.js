@@ -1,38 +1,30 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  /*
-    {
-        path: '/',
-        name: 'home',
-        component: HomeView
-    },
-    */
+  {
+    path: "/",
+    name: "home",
+    component: () => import("../views/Home.vue"),
+  },
   {
     path: "/profesores",
     name: "profesores",
-    component: () =>
-      import(/* webpackChunkName: "profesores" */ "../views/Profesores.vue"),
+    component: () => import("../views/Profesores.vue"),
   },
   {
     path: "/titulaciones",
     name: "titulaciones",
-    component: () =>
-      import(
-        /* webpackChunkName: "titulaciones" */ "../views/Titulaciones.vue"
-      ),
+    component: () => import("../views/Titulaciones.vue"),
   },
   {
     path: "/titulacion/:codigo",
     name: "titulacion",
-    component: () =>
-      import(/* webpackChunkName: "titulacion" */ "../views/Titulacion.vue"),
+    component: () => import("../views/AsignaturasTitulacion.vue"),
   },
   {
     path: "/titulacion/:codigo/asignatura/:codigo_asignatura",
     name: "asignatura",
-    component: () =>
-      import(/* webpackChunkName: "titulacion" */ "../views/Asignatura.vue"),
+    component: () => import("../views/GruposAsignatura.vue"),
   },
 ];
 

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Titulacion_Service from "../services/Titulacion_Service";
+import Titulaciones_Service from "../services/Titulaciones_Service";
 
 export default {
   name: "TitulacionScript",
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     getTitulaciones() {
-      Titulacion_Service.getTitulaciones().then((response) => {
+      Titulaciones_Service.getTitulaciones().then((response) => {
         this.titulaciones = response.data;
       });
     },
