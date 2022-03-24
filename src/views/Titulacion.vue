@@ -18,7 +18,11 @@
         <th>TITULACION</th>
       </thead>
       <tbody>
-        <tr v-for="asignatura in asignaturas" v-bind:key="asignatura.id">
+        <tr
+          v-for="asignatura in asignaturas"
+          v-bind:key="asignatura.id"
+          v-on:click="navegarAsignatura(asignatura.codigoAsignatura)"
+        >
           <td>{{ asignatura.id }}</td>
           <td>{{ asignatura.caracterAsignatura }}</td>
           <td>{{ asignatura.codigoAsignatura }}</td>
@@ -53,6 +57,11 @@ export default {
           this.asignaturas = response.data;
         }
       );
+    },
+    navegarAsignatura(codigo) {
+      var ruta =
+        "/titulacion/" + this.$route.params.codigo + "/asignatura/" + codigo;
+      window.location.href = ruta;
     },
   },
   created() {
