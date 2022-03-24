@@ -96,7 +96,7 @@
 import Grupos_Service from "../services/Grupos_Service";
 
 export default {
-  name: "TitulacionScript",
+  name: "GruposAsignaturaScript",
   data() {
     return {
       gruposTeoria: [],
@@ -104,16 +104,11 @@ export default {
     };
   },
   methods: {
-    getGrupos() {
-      Grupos_Service.getGruposTeoria(this.$route.params.codigo_asignatura).then(
-        (response) => {
-          this.gruposTeoria = response.data;
-          console.log("A: ", this.gruposTeoria);
-        }
-      );
-      Grupos_Service.getGruposPractica(
-        this.$route.params.codigo_asignatura
-      ).then((response) => {
+    getGrupos(codigo_asignatura) {
+      Grupos_Service.getGruposTeoria(codigo_asignatura).then((response) => {
+        this.gruposTeoria = response.data;
+      });
+      Grupos_Service.getGruposPractica(codigo_asignatura).then((response) => {
         this.gruposPractica = response.data;
       });
     },

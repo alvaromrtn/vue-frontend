@@ -17,12 +17,12 @@ const routes = [
     component: () => import("../views/Titulaciones.vue"),
   },
   {
-    path: "/titulacion/:codigo",
+    path: "/titulacion/:codigo_titulacion",
     name: "titulacion",
     component: () => import("../views/AsignaturasTitulacion.vue"),
   },
   {
-    path: "/titulacion/:codigo/asignatura/:codigo_asignatura",
+    path: "/titulacion/:codigo_titulacion/asignatura/:codigo_asignatura",
     name: "asignatura",
     component: () => import("../views/GruposAsignatura.vue"),
   },

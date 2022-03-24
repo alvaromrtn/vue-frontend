@@ -30,7 +30,7 @@
 import Titulaciones_Service from "../services/Titulaciones_Service";
 
 export default {
-  name: "TitulacionScript",
+  name: "TitulacionesScript",
   data() {
     return {
       titulaciones: [],

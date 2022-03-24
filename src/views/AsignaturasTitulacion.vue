@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="text-center">
-      Titulacion: {{ $route.params.codigo }} - ASIGNATURAS
+      Titulacion: {{ $route.params.codigo_titulacion }} - ASIGNATURAS
     </h1>
     <table class="table table-striped">
       <thead>
@@ -21,7 +21,12 @@
         <tr
           v-for="asignatura in asignaturas"
           v-bind:key="asignatura.id"
-          v-on:click="navegarAsignatura(asignatura.codigoAsignatura)"
+          v-on:click="
+            navegarAsignatura(
+              $route.params.codigo_titulacion,
+              asignatura.codigoAsignatura
+            )
+          "
         >
           <td>{{ asignatura.id }}</td>
           <td>{{ asignatura.caracterAsignatura }}</td>
@@ -44,28 +49,26 @@
 import Asignaturas_Service from "../services/Asignaturas_Service";
 
 export default {
-  name: "TitulacionScript",
+  name: "AsignaturasTitulacionScript",
   data() {
     return {
       asignaturas: [],
     };
   },
   methods: {
-    getAsignaturas() {
-      Asignaturas_Service.getAsignaturas(this.$route.params.codigo).then(
-        (response) => {
-          this.asignaturas = response.data;
-        }
-      );
+    getAsignaturas(codigo_titulacion) {
+      Asignaturas_Service.getAsignaturas(codigo_titulacion).then((response) => {
+        this.asignaturas = response.data;
+      });
     },
-    navegarAsignatura(codigo) {
+    navegarAsignatura(codigo_titulacion, codigo_asignatura) {
       var ruta =
-        "/titulacion/" + this.$route.params.codigo + "/asignatura/" + codigo;
+        "/titulacion/" + codigo_titulacion + "/asignatura/" + codigo_asignatura;
       window.location.href = ruta;
     },
   },
   created() {
-    this.getAsignaturas(this.$route.params.codigo);
+    this.getAsignaturas(this.$route.params.codigo_titulacion);
   },
 };
 </script>
