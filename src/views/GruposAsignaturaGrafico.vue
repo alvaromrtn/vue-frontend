@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <div class="field is-grouped">
+  <div class="field is-grouped">
+    <div v-for="index in arrayNumeroProfesores" :key="index">
       <div class="control">
         <label class="checkbox">
-          <input type="checkbox" :value="0" v-model="profesoresSeleccionados" />
-          {{ this.dataset[0].label }}
-        </label>
-      </div>
-      <div class="control">
-        <label class="checkbox">
-          <input type="checkbox" :value="1" v-model="profesoresSeleccionados" />
-          {{ this.dataset[1].label }}
+          <input
+            type="checkbox"
+            :value="this.arrayNumeroProfesores[index]"
+            v-model="profesoresSeleccionados"
+          />
+          {{ this.dataset[index].label }}
         </label>
       </div>
     </div>
@@ -59,6 +57,7 @@ export default {
   props: {
     dataset: Array,
     tipoGrafico: String,
+    arrayNumeroProfesores: Array,
   },
   options,
   components: {
@@ -66,7 +65,7 @@ export default {
   },
   data() {
     return {
-      profesoresSeleccionados: [0, 1], //CAMBIAR
+      profesoresSeleccionados: this.arrayNumeroProfesores, //CAMBIAR
     };
   },
   computed: {

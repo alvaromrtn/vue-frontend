@@ -11,6 +11,7 @@
           <grupos-asignatura-grafico
             :dataset="this.datasetTeoria"
             :tipoGrafico="this.tipoGraficoTeoria"
+            :arrayNumeroProfesores="this.arrayNumeroProfesoresTeoria"
           >
           </grupos-asignatura-grafico>
         </div>
@@ -67,6 +68,7 @@
           <grupos-asignatura-grafico
             :dataset="this.datasetPractica"
             :tipoGrafico="this.tipoGraficoPractica"
+            :arrayNumeroProfesores="this.arrayNumeroProfesoresPractica"
           >
           </grupos-asignatura-grafico>
         </div>
@@ -136,6 +138,8 @@ export default {
       tipoGraficoPractica: "",
       datasetTeoria: [],
       datasetPractica: [],
+      arrayNumeroProfesoresTeoria: [],
+      arrayNumeroProfesoresPractica: [],
     };
   },
   methods: {
@@ -149,7 +153,9 @@ export default {
           this.gruposTeoria
         );
 
-        console.log("DATASET TEORIA: " + this.datasetTeoria);
+        for (var i = 0; i < this.datasetTeoria.length; i++) {
+          this.arrayNumeroProfesoresTeoria.push(i);
+        }
       });
       Grupos_Service.getGruposPractica(codigo_asignatura).then((response) => {
         this.gruposPractica = response.data;
@@ -160,7 +166,9 @@ export default {
           this.gruposPractica
         );
 
-        console.log("DATASET PRACTICA: " + this.datasetTeoria);
+        for (var i = 0; i < this.datasetPractica.length; i++) {
+          this.arrayNumeroProfesoresPractica.push(i);
+        }
       });
     },
   },
