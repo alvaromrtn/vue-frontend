@@ -12,11 +12,18 @@ class CrearDataset_Component {
         }
       });
 
+      //  Math.random() * (max - min) + min; -> Retorna un número aleatorio entre min (incluido) y max (excluido)
+      //  Math.random() * (256 - 0)
       if (noExiste) {
+        let rojoRGB = Math.random() * (256 - 0);
+        let verdeRGB = Math.random() * (256 - 0);
+        let azulRGB = Math.random() * (256 - 0);
+
         let data = {
           label: "",
           borderColor: "rgba(50, 115, 220, 0.5)",
-          backgroundColor: "rgba(50, 115, 220, 0.1)",
+          backgroundColor:
+            "rgba(" + rojoRGB + ", " + verdeRGB + ", " + azulRGB + ", 0.75)",
           data: [0, 0, 0, 0, 0],
         };
 
