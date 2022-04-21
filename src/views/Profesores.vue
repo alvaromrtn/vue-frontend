@@ -26,7 +26,7 @@
 
 <script>
 import Profesor_Service from "../services/Profesor_Service";
-import Titulacion from "./Titulaciones.vue";
+import Titulacion from "./Titulaciones";
 
 export default {
   name: "ProfesoresScript",
