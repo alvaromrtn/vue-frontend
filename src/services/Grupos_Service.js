@@ -1,7 +1,8 @@
 import axios from "axios";
 
-const GRUPOS_TEORIA_API_BASE_URL = "http://localhost:8080/api/gruposTeoria";
-const GRUPOS_PRACTICA_API_BASE_URL = "http://localhost:8080/api/gruposPractica";
+const GRUPOS_TEORIA_API_BASE_URL = "http://192.168.0.24:8080/api/gruposTeoria";
+const GRUPOS_PRACTICA_API_BASE_URL =
+  "http://192.168.0.24:8080/api/gruposPractica";
 
 class Grupos_Service {
   getGruposTeoria(codigo_asignatura) {
