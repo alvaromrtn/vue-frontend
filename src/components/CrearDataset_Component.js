@@ -21,10 +21,11 @@ class CrearDataset_Component {
 
         let data = {
           label: "",
-          borderColor: "rgba(50, 115, 220, 0.5)",
+          borderColor: "rgba(0, 0, 0, 1)",
           backgroundColor:
             "rgba(" + rojoRGB + ", " + verdeRGB + ", " + azulRGB + ", 0.75)",
           data: [0, 0, 0, 0, 0],
+          borderWidth: 0.5,
         };
 
         data.label = element.nombreProfesor;
