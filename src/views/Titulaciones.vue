@@ -26,18 +26,14 @@
       </table>
     </div>
     <div v-else>
-      <img
-        src="../../static/gifs/carga.gif"
-        class="img-responsive"
-        height="100"
-        width="100"
-      />
+      <ProcesoCarga />
     </div>
   </div>
 </template>
 
 <script>
 import Titulaciones_Service from "../services/Titulaciones_Service";
+import ProcesoCarga from "./ProcesoCarga";
 
 export default {
   name: "TitulacionesScript",
@@ -47,7 +43,9 @@ export default {
       datosCargados: false,
     };
   },
-  datosCargados: true,
+  components: {
+    ProcesoCarga,
+  },
   methods: {
     getTitulaciones() {
       Titulaciones_Service.getTitulaciones().then((response) => {

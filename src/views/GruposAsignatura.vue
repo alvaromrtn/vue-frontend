@@ -4,7 +4,7 @@
       codigo asignatura: {{ $route.params.codigo_asignatura }} - GRUPOS
     </h1>
 
-    <div name="gruposTeoria">
+    <div name="gruposTeoria" v-if="datosCargadosTeoria">
       <div name="graficoGruposTeoria">
         <div v-if="this.datasetTeoria.length !== 0">
           <h2 class="title is-5">GRÁFICO GRUPOS TEORÍA</h2>
@@ -60,8 +60,11 @@
         </table>
       </div>
     </div>
+    <div v-else>
+      <ProcesoCarga />
+    </div>
 
-    <div name="gruposPractica">
+    <div name="gruposPractica" v-if="datosCargadosPractica">
       <div name="graficoGruposPractica">
         <div v-if="this.datasetPractica.length !== 0">
           <h2 class="title is-5">GRÁFICO GRUPOS PRÁCTICA</h2>
@@ -116,12 +119,16 @@
         </table>
       </div>
     </div>
+    <div v-else>
+      <ProcesoCarga />
+    </div>
   </div>
 </template>
 
 <script>
 import Grupos_Service from "../services/Grupos_Service";
 import GruposAsignaturaGrafico from "./GruposAsignaturaGrafico";
+import ProcesoCarga from "./ProcesoCarga";
 
 import CrearDataset_Component from "../components/CrearDataset_Component";
 
@@ -129,6 +136,7 @@ export default {
   name: "GruposAsignaturaScript",
   components: {
     GruposAsignaturaGrafico,
+    ProcesoCarga,
   },
   data() {
     return {
@@ -140,6 +148,8 @@ export default {
       datasetPractica: [],
       arrayNumeroProfesoresTeoria: [],
       arrayNumeroProfesoresPractica: [],
+      datosCargadosTeoria: false,
+      datosCargadosPractica: false,
     };
   },
   methods: {
@@ -156,6 +166,8 @@ export default {
         for (var i = 0; i < this.datasetTeoria.length; i++) {
           this.arrayNumeroProfesoresTeoria.push(i);
         }
+
+        this.datosCargadosTeoria = true;
       });
       Grupos_Service.getGruposPractica(codigo_asignatura).then((response) => {
         this.gruposPractica = response.data;
@@ -169,6 +181,8 @@ export default {
         for (var i = 0; i < this.datasetPractica.length; i++) {
           this.arrayNumeroProfesoresPractica.push(i);
         }
+
+        this.datosCargadosPractica = true;
       });
     },
   },
