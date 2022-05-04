@@ -2,7 +2,18 @@
   <!-- navbar -->
   <div id="nav">
     <nav class="container navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Logo Here</a>
+      <a
+        title="Universidad de Salamanca"
+        href="https://www.usal.es"
+        target="_blank"
+      >
+        <img
+          src="../../static/images/logo_usal.png"
+          alt="Universidad de Salamanca"
+          height="100"
+        />
+      </a>
+
       <button
         class="navbar-toggler"
         type="button"
