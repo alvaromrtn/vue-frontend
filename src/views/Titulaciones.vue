@@ -1,36 +1,36 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Lista de Titulaciones</h1>
-
-    <h1 class="text-center">TOTAL DE PAGINAS: {{ totalPaginas() }}</h1>
+    <h1 class="text-center">Titulaciones</h1>
 
     <div v-if="datosCargados">
-      <nav aria-label="Page navigation example">
+      <nav aria-label="PaginaciónTablaTitulaciones">
         <ul class="pagination justify-content-center">
-          <li class="page-item" v-on:click="getPreviousPage()">
-            <a class="page-link" href="#">Previous</a>
+          <li class="page-item" v-on:click="getPaginaAnterior()">
+            <a class="page-link" href="#">Anterior</a>
           </li>
           <li
-            v-for="pagina in totalPaginas()"
+            v-for="pagina in numeroTotalPaginas()"
             :key="pagina"
-            v-on:click="getDataPagina(pagina)"
+            v-on:click="getTitulacionesPagina(pagina)"
             class="page-item"
-            v-bind:class="isActive(pagina)"
+            v-bind:class="paginaActiva(pagina)"
           >
             <a class="page-link" href="#">{{ pagina }}</a>
           </li>
-          <li class="page-item" v-on:click="getNextPage()">
-            <a class="page-link" href="#">Next</a>
+          <li class="page-item" v-on:click="getPaginaSiguiente()">
+            <a class="page-link" href="#">Siguiente</a>
           </li>
         </ul>
       </nav>
       <table class="table table-striped">
         <thead>
-          <th>ID</th>
-          <th>CENTRO</th>
-          <th>CODIGO</th>
-          <th>NOMBRE</th>
-          <th>CURSOS</th>
+          <th style="width: 5%" v-on:click="ordenarPor('id')">ID</th>
+          <th style="width: 40%" v-on:click="ordenarPor('centro')">CENTRO</th>
+          <th style="width: 10%" v-on:click="ordenarPor('codigo')">CODIGO</th>
+          <th style="width: 40%" v-on:click="ordenarPor('nombre')">NOMBRE</th>
+          <th style="width: 5%" v-on:click="ordenarPor('numeroCursos')">
+            CURSOS
+          </th>
         </thead>
         <tbody>
           <tr
@@ -38,11 +38,11 @@
             v-bind:key="titulacion.id"
             v-on:click="navegarTitulacion(titulacion.codigo)"
           >
-            <td>{{ titulacion.id }}</td>
-            <td>{{ titulacion.centro }}</td>
-            <td>{{ titulacion.codigo }}</td>
-            <td>{{ titulacion.nombre }}</td>
-            <td>{{ titulacion.numeroCursos }}</td>
+            <td style="width: 5%">{{ titulacion.id }}</td>
+            <td style="width: 40%">{{ titulacion.centro }}</td>
+            <td style="width: 10%">{{ titulacion.codigo }}</td>
+            <td style="width: 40%">{{ titulacion.nombre }}</td>
+            <td style="width: 5%">{{ titulacion.numeroCursos }}</td>
           </tr>
         </tbody>
       </table>
@@ -67,8 +67,8 @@ export default {
       titulaciones: [],
       datosCargados: false,
       //
-      elementosPorPagina: 10,
       titulacionesPaginadas: [],
+      elementosPorPagina: 10,
       paginaActual: 1,
     };
   },
@@ -77,51 +77,93 @@ export default {
       Titulaciones_Service.getTitulaciones().then((response) => {
         this.titulaciones = response.data;
         this.datosCargados = true;
-        this.getDataPagina(1);
+        this.getTitulacionesPagina(1);
       });
     },
     navegarTitulacion(codigo) {
       var ruta = "/titulacion/" + codigo;
       window.location.href = ruta;
     },
-    totalPaginas() {
+    numeroTotalPaginas() {
       return Math.ceil(this.titulaciones.length / this.elementosPorPagina);
     },
-    getDataPagina(numeroPagina) {
+    getTitulacionesPagina(numeroPagina) {
       this.paginaActual = numeroPagina;
       this.titulacionesPaginadas = [];
-      let ini =
+      let inicio =
         numeroPagina * this.elementosPorPagina - this.elementosPorPagina;
       let fin = numeroPagina * this.elementosPorPagina;
-      /*
-      for (let index = ini; index < fin; index++) {
-        this.titulacionesPaginadas.push(this.titulaciones[index]);
-      }
-      */
-      this.titulacionesPaginadas = this.titulaciones.slice(ini, fin);
+      this.titulacionesPaginadas = this.titulaciones.slice(inicio, fin);
     },
-    getPreviousPage() {
+    getPaginaAnterior() {
       if (this.paginaActual > 1) {
         this.paginaActual--;
       }
-      this.getDataPagina(this.paginaActual);
+      this.getTitulacionesPagina(this.paginaActual);
     },
-    getNextPage() {
-      if (this.paginaActual < this.totalPaginas()) {
+    getPaginaSiguiente() {
+      if (this.paginaActual < this.numeroTotalPaginas()) {
         this.paginaActual++;
       }
-
-      this.getDataPagina(this.paginaActual);
+      this.getTitulacionesPagina(this.paginaActual);
     },
-    isActive(numeroPagina) {
-      //active
-      /*
-      if (numeroPagina == this.paginaActual) {
-        return "active";
-      } else {
-        return "";
-      }*/
+    paginaActiva(numeroPagina) {
       return numeroPagina == this.paginaActual ? "active" : "";
+    },
+    ordenarPor(campo) {
+      switch (campo) {
+        case "id":
+          this.titulaciones.sort((a, b) => {
+            if (a.id < b.id) {
+              return -1;
+            }
+            if (a.id > b.id) {
+              return 1;
+            }
+          });
+          break;
+        case "centro":
+          this.titulaciones.sort((a, b) => {
+            if (a.centro < b.centro) {
+              return -1;
+            }
+            if (a.centro > b.centro) {
+              return 1;
+            }
+          });
+          break;
+        case "codigo":
+          this.titulaciones.sort((a, b) => {
+            if (a.codigo < b.codigo) {
+              return -1;
+            }
+            if (a.codigo > b.codigo) {
+              return 1;
+            }
+          });
+          break;
+        case "nombre":
+          this.titulaciones.sort((a, b) => {
+            if (a.nombre < b.nombre) {
+              return -1;
+            }
+            if (a.nombre > b.nombre) {
+              return 1;
+            }
+          });
+          break;
+        case "numeroCursos":
+          this.titulaciones.sort((a, b) => {
+            if (a.numeroCursos < b.numeroCursos) {
+              return -1;
+            }
+            if (a.numeroCursos > b.numeroCursos) {
+              return 1;
+            }
+          });
+          break;
+      }
+      this.getTitulacionesPagina(this.paginaActual);
     },
   },
   created() {
@@ -145,5 +187,12 @@ export default {
 .pagination > .active > a:hover {
   background-color: red !important;
   border: solid 1px red;
+}
+
+.table > thead > th {
+  cursor: pointer;
+}
+.table > tbody > tr {
+  cursor: pointer;
 }
 </style>
