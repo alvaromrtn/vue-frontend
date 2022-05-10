@@ -20,7 +20,7 @@
       <div name="tablaGruposTeoria">
         <h1 class="text-center">GRUPOS DE TEORÍA</h1>
 
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive">
           <thead>
             <th>ID</th>
             <th>C. AULA</th>
@@ -79,7 +79,7 @@
 
       <div name="tablaGruposPractica">
         <h1 class="text-center">GRUPOS DE PRÁCTICA</h1>
-        <table class="table table-striped">
+        <table class="table table-striped table-responsive">
           <thead>
             <th>ID</th>
             <th>C. AULA</th>

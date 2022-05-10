@@ -22,7 +22,7 @@
           </li>
         </ul>
       </nav>
-      <table class="table table-striped">
+      <table class="table table-striped table-responsive">
         <thead>
           <th style="width: 5%" v-on:click="ordenarPor('id')">ID</th>
           <th style="width: 40%" v-on:click="ordenarPor('centro')">CENTRO</th>

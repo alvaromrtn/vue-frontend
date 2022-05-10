@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="text-center">Lista de Profesores</h1>
-    <table class="table table-striped">
+    <table class="table table-striped table-responsive">
       <thead>
         <th>ID</th>
         <th>NOMBRE</th>
