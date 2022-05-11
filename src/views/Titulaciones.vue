@@ -4,19 +4,22 @@
 
     <div class="grid">
       <div id="filtro">
-        <form action="/action_page.php" id="carform">
-          <label for="fname">Firstname:</label>
-          <input type="text" id="fname" name="fname" />
-          <input type="submit" />
+        <form action class="form" @submit.prevent="filtroNombre()">
+          <label class="form-label">Nombre: </label>
+          <input
+            class="form-input"
+            v-model="filtro"
+            type="text"
+            placeholder="Grado en Biología"
+          />
+          <input class="form-submit" type="submit" value="Filtrar" />
         </form>
 
-        <label for="cars">Choose a car:</label>
-        <select name="cars" id="cars" form="carform">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="opel">Opel</option>
-          <option value="audi">Audi</option>
-        </select>
+        <input
+          type="button"
+          value="Borrar filtros"
+          v-on:click="borrarFiltro()"
+        />
       </div>
       <div id="paginación">
         <nav aria-label="PaginaciónTablaTitulaciones">
@@ -67,7 +70,7 @@
         <tbody>
           <tr
             v-for="titulacion in titulacionesPaginadas"
-            v-bind:key="titulacion.id"
+            v-bind:key="titulacion.nombre"
             v-on:click="navegarTitulacion(titulacion.codigo)"
           >
             <td style="width: 40%">{{ titulacion.centro }}</td>
@@ -96,19 +99,37 @@ export default {
   data() {
     return {
       titulaciones: [],
+      titulacionesCopia: [],
       datosCargados: false,
       //
       titulacionesPaginadas: [],
       elementosPorPagina: 10,
       paginaActual: 1,
       //
+      filtro: "",
     };
   },
   methods: {
+    filtroNombre() {
+      let titulacionesFiltradas = [];
+      this.titulaciones.forEach((titulacion) => {
+        if (
+          titulacion.nombre.toLowerCase().includes(this.filtro.toLowerCase())
+        ) {
+          titulacionesFiltradas.push(titulacion);
+        }
+      });
+      this.titulaciones = titulacionesFiltradas;
+      this.getTitulacionesPagina(1);
+    },
+    borrarFiltro() {
+      this.titulaciones = this.titulacionesCopia;
+    },
     getTitulaciones() {
       Titulaciones_Service.getTitulaciones().then((response) => {
         this.titulaciones = response.data;
         this.datosCargados = true;
+        this.titulacionesCopia = this.titulaciones;
         this.getTitulacionesPagina(1);
       });
     },
@@ -304,9 +325,5 @@ export default {
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: red;
 }
 </style>
