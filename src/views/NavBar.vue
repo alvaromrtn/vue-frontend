@@ -1,7 +1,7 @@
 <template>
   <!-- navbar -->
   <div id="nav">
-    <nav class="container navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
       <a
         title="Universidad de Salamanca"
         href="https://www.usal.es"
@@ -41,3 +41,20 @@
     </nav>
   </div>
 </template>
+
+<style>
+#nav {
+  text-align: center;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: whitesmoke;
+  background: crimson;
+  border-radius: 0.5rem;
+}
+</style>
