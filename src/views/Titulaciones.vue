@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="text-center">Titulaciones</h1>
+    <h1 class="text-center">{{ $t("titulaciones.titulaciones") }}</h1>
 
     <div class="grid">
       <div id="filtro">
@@ -48,8 +48,8 @@
           <div class="dropdown-content">
             <a v-on:click="ordenarPor('centro_descendente')">CENTRO ▾</a>
             <a v-on:click="ordenarPor('centro_ascendente')">CENTRO ▴</a>
-            <a v-on:click="ordenarPor('codigo_descendente')">CODIGO ▾</a>
-            <a v-on:click="ordenarPor('codigo_ascendente')">CODIGO ▴</a>
+            <a v-on:click="ordenarPor('codigo_descendente')">CÓDIGO ▾</a>
+            <a v-on:click="ordenarPor('codigo_ascendente')">CÓDIGO ▴</a>
             <a v-on:click="ordenarPor('nombre_descendente')">NOMBRE ▾</a>
             <a v-on:click="ordenarPor('nombre_ascendente')">NOMBRE ▴</a>
             <a v-on:click="ordenarPor('numeroCursos_descendente')">CURSOS ▾</a>
@@ -63,7 +63,7 @@
       <table class="table table-striped table-responsive">
         <thead>
           <th style="width: 40%">CENTRO</th>
-          <th style="width: 15%">CODIGO</th>
+          <th style="width: 15%">CÓDIGO</th>
           <th style="width: 40%">NOMBRE</th>
           <th style="width: 5%">CURSOS</th>
         </thead>
@@ -135,7 +135,7 @@ export default {
     },
     navegarTitulacion(codigo) {
       var ruta = "/titulacion/" + codigo;
-      window.location.href = ruta;
+      this.$router.push(ruta);
     },
     numeroTotalPaginas() {
       return Math.ceil(this.titulaciones.length / this.elementosPorPagina);

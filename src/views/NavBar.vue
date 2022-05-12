@@ -38,9 +38,21 @@
           <router-link to="/contacto" class="nav-link">Contacto</router-link>
         </div>
       </div>
+
+      <LocaleSwitcher />
     </nav>
   </div>
 </template>
+
+<script>
+import LocaleSwitcher from "./LocaleSwitcher.vue";
+
+export default {
+  components: {
+    LocaleSwitcher,
+  },
+};
+</script>
 
 <style>
 #nav {

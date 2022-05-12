@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <h1 class="text-center">
-      codigo asignatura: {{ $route.params.codigo_asignatura }} - GRUPOS
+      <p>CÓDIGO ASIGNATURAS: {{ $route.params.codigo_asignatura }}</p>
+      <p>GRUPOS</p>
     </h1>
 
     <div name="gruposTeoria" v-if="datosCargadosTeoria">
@@ -26,7 +27,7 @@
             <th>C. AULA</th>
             <th>C. GRUPO</th>
             <th>C. PROFESOR</th>
-            <th>H. DIA SEMANA</th>
+            <th>H. DÍA SEMANA</th>
             <th>H. HORA FIN</th>
             <th>H. HORA INICIO</th>
             <th>H. QUINCENAL</th>
@@ -36,7 +37,7 @@
             <th>N. GRUPO</th>
             <th>N. PROFESOR</th>
             <th>ALUMNOS</th>
-            <th>PERIODO</th>
+            <th>CUATRIMESTRE</th>
           </thead>
           <tbody>
             <tr v-for="grupo in gruposTeoria" v-bind:key="grupo.id">

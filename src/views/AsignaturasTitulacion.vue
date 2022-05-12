@@ -1,27 +1,31 @@
 <template>
   <div class="container">
     <h1 class="text-center">
-      Titulacion: {{ $route.params.codigo_titulacion }} - ASIGNATURAS
+      <p>
+        {{ $t("asignaturas.titulacion") }}:
+        {{ $route.params.codigo_titulacion }}
+      </p>
+      <p>
+        {{ $t("asignaturas.asignaturas") }}
+      </p>
     </h1>
     <div v-if="datosCargados">
       <table class="table table-striped table-responsive">
         <thead>
-          <th>ID</th>
-          <th>CARACTER</th>
-          <th>CODIGO</th>
-          <th>OCURRENCIA</th>
-          <th>CREDITOS P</th>
-          <th>CREDITOS T</th>
-          <th>CURSO</th>
-          <th>NOMBRE</th>
-          <th>PERIODO</th>
-          <th>RESPONSABLE</th>
-          <th>TITULACION</th>
+          <th>{{ $t("asignaturas.tabla.caracter") }}</th>
+          <th>{{ $t("asignaturas.tabla.codigo") }}</th>
+          <th>{{ $t("asignaturas.tabla.creditos_p") }}</th>
+          <th>{{ $t("asignaturas.tabla.creditos_t") }}</th>
+          <th>{{ $t("asignaturas.tabla.curso") }}</th>
+          <th>{{ $t("asignaturas.tabla.nombre") }}</th>
+          <th>{{ $t("asignaturas.tabla.cuatrimestre") }}</th>
+          <th>{{ $t("asignaturas.tabla.responsable") }}</th>
+          <th>{{ $t("asignaturas.tabla.titulacion") }}</th>
         </thead>
         <tbody>
           <tr
             v-for="asignatura in asignaturas"
-            v-bind:key="asignatura.id"
+            v-bind:key="asignatura.codigoAsignatura"
             v-on:click="
               navegarAsignatura(
                 $route.params.codigo_titulacion,
@@ -29,10 +33,8 @@
               )
             "
           >
-            <td>{{ asignatura.id }}</td>
             <td>{{ asignatura.caracterAsignatura }}</td>
             <td>{{ asignatura.codigoAsignatura }}</td>
-            <td>{{ asignatura.codigoOcurrencia }}</td>
             <td>{{ asignatura.creditosPractica }}</td>
             <td>{{ asignatura.creditosTeoria }}</td>
             <td>{{ asignatura.cursoAsignatura }}</td>
@@ -75,7 +77,7 @@ export default {
     navegarAsignatura(codigo_titulacion, codigo_asignatura) {
       var ruta =
         "/titulacion/" + codigo_titulacion + "/asignatura/" + codigo_asignatura;
-      window.location.href = ruta;
+      this.$router.push(ruta);
     },
   },
   created() {
