@@ -30,10 +30,14 @@
         <div class="navbar-nav mr-auto">
           <router-link to="/" class="nav-link">Home</router-link>
           <router-link to="/titulaciones" class="nav-link"
-            >Titulaciones</router-link
+            >TitulacionesDIAWEB</router-link
           >
           <router-link to="/profesores" class="nav-link"
-            >Profesores</router-link
+            >ProfesoresEXCEL</router-link
+          >
+
+          <router-link to="/asignaturas" class="nav-link"
+            >AsignaturasEXCEL</router-link
           >
           <router-link to="/contacto" class="nav-link">Contacto</router-link>
         </div>

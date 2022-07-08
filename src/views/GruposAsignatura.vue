@@ -30,7 +30,6 @@
             <th>H. DÍA SEMANA</th>
             <th>H. HORA FIN</th>
             <th>H. HORA INICIO</th>
-            <th>H. QUINCENAL</th>
             <th>N. ASIGNATURA</th>
             <th>N. AULA</th>
             <th>N. EDIFICIO</th>
@@ -48,7 +47,6 @@
               <td>{{ grupo.horarioDiaSemana }}</td>
               <td>{{ grupo.horarioHoraFin }}</td>
               <td>{{ grupo.horarioHoraInicio }}</td>
-              <td>{{ grupo.horarioQuincenal }}</td>
               <td>{{ grupo.nombreAsignatura }}</td>
               <td>{{ grupo.nombreAula }}</td>
               <td>{{ grupo.nombreEdificio }}</td>
@@ -89,7 +87,6 @@
             <th>H. DIA SEMANA</th>
             <th>H. HORA FIN</th>
             <th>H. HORA INICIO</th>
-            <th>H. QUINCENAL</th>
             <th>N. ASIGNATURA</th>
             <th>N. AULA</th>
             <th>N. EDIFICIO</th>
@@ -107,7 +104,6 @@
               <td>{{ grupo.horarioDiaSemana }}</td>
               <td>{{ grupo.horarioHoraFin }}</td>
               <td>{{ grupo.horarioHoraInicio }}</td>
-              <td>{{ grupo.horarioQuincenal }}</td>
               <td>{{ grupo.nombreAsignatura }}</td>
               <td>{{ grupo.nombreAula }}</td>
               <td>{{ grupo.nombreEdificio }}</td>

@@ -1,26 +1,28 @@
 <template>
-  <div class="field is-grouped">
-    <div v-for="index in arrayNumeroProfesores" :key="index">
-      <div class="control">
-        <label class="checkbox">
-          <input
-            type="checkbox"
-            :value="this.arrayNumeroProfesores[index]"
-            v-model="profesoresSeleccionados"
-          />
-          {{ this.dataset[index].label }}
-        </label>
+  <div class="container" style="border: 1px solid black">
+    <div class="field is-grouped">
+      <div v-for="index in arrayNumeroProfesores" :key="index">
+        <div class="control">
+          <label class="checkbox">
+            <input
+              type="checkbox"
+              :value="this.arrayNumeroProfesores[index]"
+              v-model="profesoresSeleccionados"
+            />
+            {{ this.dataset[index].label }}
+          </label>
+        </div>
       </div>
-    </div>
 
-    <grafico-canvas
-      :width="500"
-      :height="300"
-      :labels="['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']"
-      :tipo="this.tipoGrafico"
-      :datasets="displayedDatasets"
-      :options="$options.options"
-    ></grafico-canvas>
+      <grafico-canvas
+        :width="200"
+        :height="50"
+        :labels="['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']"
+        :tipo="this.tipoGrafico"
+        :datasets="displayedDatasets"
+        :options="$options.options"
+      ></grafico-canvas>
+    </div>
   </div>
 </template>
 
