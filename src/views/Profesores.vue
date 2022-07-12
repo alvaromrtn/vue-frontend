@@ -9,7 +9,11 @@
         <th>CORREO</th>
       </thead>
       <tbody>
-        <tr v-for="profesor in profesores" v-bind:key="profesor.id">
+        <tr
+          v-for="profesor in profesores"
+          v-bind:key="profesor.id"
+          v-on:click="navegarProfesor(profesor.id)"
+        >
           <td>{{ profesor.id }}</td>
           <td>{{ profesor.nombre }}</td>
           <td>{{ profesor.apellidos }}</td>
@@ -43,6 +47,10 @@ export default {
       Profesor_Service.getProfesores().then((response) => {
         this.profesores = response.data;
       });
+    },
+    navegarProfesor(columna_profesor) {
+      var ruta = "/profesor/" + columna_profesor;
+      this.$router.push(ruta);
     },
   },
   created() {

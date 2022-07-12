@@ -16,6 +16,7 @@
           <th>{{ $t("asignaturas.tabla.creditos_t") }}</th>
           <th>{{ $t("asignaturas.tabla.creditos_p") }}</th>
           <th>{{ $t("asignaturas.tabla.titulacion") }}</th>
+          <th>HORAS TOTALES</th>
         </thead>
         <tbody>
           <tr
@@ -30,6 +31,7 @@
             <td>{{ asignatura.creditosTeoria }}</td>
             <td>{{ asignatura.creditosPractica }}</td>
             <td>{{ asignatura.nombreTitulacion }}</td>
+            <td>{{ asignatura.horasTotales }}</td>
           </tr>
         </tbody>
       </table>
@@ -45,7 +47,7 @@ import Asignaturas_Service from "../services/Asignaturas_Service";
 import ProcesoCarga from "./ProcesoCarga";
 
 export default {
-  name: "AsignaturasScript",
+  name: "AsignaturasProfesorScript",
   data() {
     return {
       asignaturas: [],
@@ -56,11 +58,13 @@ export default {
     ProcesoCarga,
   },
   methods: {
-    getAsignaturas() {
-      Asignaturas_Service.getAsignaturasExcel().then((response) => {
-        this.asignaturas = response.data;
-        this.datosCargados = true;
-      });
+    getAsignaturas(columna_profesor) {
+      Asignaturas_Service.getAsignaturasProfesorExcel(columna_profesor).then(
+        (response) => {
+          this.asignaturas = response.data;
+          this.datosCargados = true;
+        }
+      );
     },
     /*
     navegarAsignatura(codigo_titulacion, codigo_asignatura) {
@@ -70,7 +74,7 @@ export default {
     },*/
   },
   created() {
-    this.getAsignaturas();
+    this.getAsignaturas(this.$route.params.columna_profesor);
   },
 };
 </script>
