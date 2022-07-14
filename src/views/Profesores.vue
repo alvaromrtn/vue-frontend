@@ -2,10 +2,9 @@
   <div class="container">
     <h1 class="text-center">PROFESORES</h1>
 
+    <TablaProfesores :profesores="this.profesores"></TablaProfesores>
+
     <div v-if="datosCargados">
-      <div id="grafico">
-        <ProfesoresGrafico :datos="this.datosGrafico"></ProfesoresGrafico>
-      </div>
       <table class="table table-striped table-responsive">
         <thead>
           <th>ID</th>
@@ -26,6 +25,9 @@
           </tr>
         </tbody>
       </table>
+      <div id="grafico">
+        <ProfesoresGrafico :datos="this.datosGrafico"></ProfesoresGrafico>
+      </div>
     </div>
     <div v-else>
       <ProcesoCarga />
@@ -39,6 +41,8 @@ import CrearDatasetProfesores_Component from "../components/CrearDatasetProfesor
 import ProfesoresGrafico from "./ProfesoresGrafico";
 import ProcesoCarga from "./ProcesoCarga";
 
+import TablaProfesores from "./TablaProfesores";
+
 export default {
   name: "ProfesoresScript",
   data() {
@@ -51,6 +55,7 @@ export default {
   components: {
     ProfesoresGrafico,
     ProcesoCarga,
+    TablaProfesores,
   },
   methods: {
     getProfesores() {
@@ -66,9 +71,6 @@ export default {
           listaProfesores[i] = this.profesores[i].nombre;
           listaHoras[i] = this.profesores[i].horas;
         }
-
-        this.datosGrafico.profesores = listaProfesores;
-        this.datosGrafico.horas = listaHoras;
 
         this.datosGrafico.options.xaxis.categories = listaProfesores;
         this.datosGrafico.series[0].data = listaHoras;
