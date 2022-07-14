@@ -1,28 +1,30 @@
 <template>
   <div class="container-busqueda">
     <div>
-      <span>Buscar por:</span>
-      <select v-model="searchField">
+      <span>Buscar por: </span>
+      <select v-model="campoBusqueda">
         <option>nombre</option>
         <option>horas</option>
       </select>
     </div>
     <div>
-      <span>search value: </span> <input type="text" v-model="searchValue" />
+      <span>Valor de búsqueda: </span>
+      <input type="text" v-model="valorBusqueda" />
     </div>
   </div>
 
+  <br />
+
   <EasyDataTable
-    ref="tabla"
     :headers="cabeceras"
-    :items="profesores"
+    :items="datosTabla"
     alternating
     buttons-pagination
-    :search-field="searchField"
-    :search-value="searchValue"
-    @click-row="showRow"
-    :rows-per-page="elementosPorPagina"
     hide-rows-per-page
+    :search-field="campoBusqueda"
+    :search-value="valorBusqueda"
+    :rows-per-page="elementosPorPagina"
+    @click-row="navegarProfesor"
   ></EasyDataTable>
 </template>
 
@@ -32,12 +34,11 @@ import { ref } from "vue";
 export default {
   name: "TablaScript",
   props: {
-    profesores: Array,
+    datosTabla: Array,
   },
   data() {
     return {
       cabeceras: [
-        { text: "ID", value: "id", sortable: true, width: 1 },
         {
           text: "NOMBRE",
           value: "nombre",
@@ -58,32 +59,17 @@ export default {
         },
       ],
 
-      searchField: ref(""),
-      searchValue: ref(""),
-
-      showRow: (item) => {
-        this.navegarProfesor(item.id);
-      },
+      campoBusqueda: ref("nombre"),
+      valorBusqueda: ref(""),
 
       elementosPorPagina: 10,
 
-      // $ref tabla
-      tabla: ref(),
-
-      nextPage: () => {
-        //dataTable.value.nextPage();
-        console.log("aaaaa");
-        console.log();
+      navegarProfesor: (item) => {
+        var ruta = "/profesor/" + item.id;
+        this.$router.push(ruta);
       },
     };
   },
-  methods: {
-    navegarProfesor(columna_profesor) {
-      var ruta = "/profesor/" + columna_profesor;
-      this.$router.push(ruta);
-    },
-  },
-  created() {},
 };
 </script>
 

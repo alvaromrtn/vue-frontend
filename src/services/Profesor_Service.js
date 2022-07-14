@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const PROFESOR_API_BASE_URL = "http://localhost:8080/api/profesores_excel";
+const PROFESORES_API = "http://localhost:8080/api/profesores";
 
 class Profesor_Service {
   getProfesores() {
-    return axios.get(PROFESOR_API_BASE_URL);
+    return axios.get(PROFESORES_API);
   }
 }
 
