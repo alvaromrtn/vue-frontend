@@ -29,7 +29,7 @@ const routes = [
   {
     path: "/titulaciones",
     name: "titulaciones",
-    component: () => import("../views/Titulaciones.vue"),
+    component: () => import("../views/Titulaciones/Titulaciones.vue"),
   },
   {
     path: "/titulacion/:codigo_titulacion",

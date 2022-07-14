@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const TITULACIONES_API_BASE_URL = "http://localhost:8080/api/titulaciones";
+const TITULACIONES_API = "http://localhost:8080/api/titulaciones";
 
 class Titulaciones_Service {
   getTitulaciones() {
-    return axios.get(TITULACIONES_API_BASE_URL);
+    return axios.get(TITULACIONES_API);
   }
 }
 

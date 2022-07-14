@@ -43,8 +43,9 @@ export default {
           if (a.horas < b.horas) return 1;
 
           if (a.horas > b.horas) return -1;
-        }),
-          (this.datosGrafico = CrearDatasetProfesores_Component.getDataset());
+        });
+
+        this.datosGrafico = CrearDatasetProfesores_Component.getDataset();
 
         let listaProfesores = [];
         let listaHoras = [];
