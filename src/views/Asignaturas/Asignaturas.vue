@@ -5,7 +5,6 @@
       <TablaAsignaturas :datosTabla="this.asignaturas"></TablaAsignaturas>
       <br />
     </div>
-
     <div v-else>
       <ProcesoCarga />
     </div>
@@ -33,6 +32,12 @@ export default {
     getAsignaturas() {
       Asignaturas_Service.getAsignaturas().then((response) => {
         this.asignaturas = response.data;
+
+        this.asignaturas.sort((a, b) => {
+          if (a.nombreTitulacion < b.nombreTitulacion) return -1;
+
+          if (a.nombreTitulacion > b.nombreTitulacion) return 1;
+        });
 
         this.datosCargados = true;
       });

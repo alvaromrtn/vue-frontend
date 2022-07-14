@@ -32,9 +32,10 @@ const routes = [
     component: () => import("../views/Titulaciones/Titulaciones.vue"),
   },
   {
-    path: "/titulacion/:codigo_titulacion",
+    path: "/titulacion/:codigo_titulacion/asignaturas",
     name: "titulacion",
-    component: () => import("../views/AsignaturasTitulacion.vue"),
+    component: () =>
+      import("../views/AsignaturasTitulacion/AsignaturasTitulacion.vue"),
   },
   {
     path: "/titulacion/:codigo_titulacion/asignatura/:codigo_asignatura",

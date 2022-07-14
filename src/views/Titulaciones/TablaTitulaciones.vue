@@ -72,7 +72,7 @@ export default {
       elementosPorPagina: 10,
 
       navegarTitulacion: (item) => {
-        var ruta = "/titulacion/" + item.codigo;
+        var ruta = "/titulacion/" + item.codigo + "/asignaturas";
         this.$router.push(ruta);
       },
     };

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const ASIGNATURAS_API_BASE_URL = "http://localhost:8080/api/asignaturas_diaweb";
+const ASIGNATURAS_TITULACION_API =
+  "http://localhost:8080/api/asignaturasTitulacion";
 
 const ASIGNATURAS_API = "http://localhost:8080/api/asignaturas";
 
@@ -8,10 +9,10 @@ const ASIGNATURASPROFESOREXCEL_API_BASE_URL =
   "http://localhost:8080/api/asignaturasProfesor_excel";
 
 class Asignaturas_Service {
-  getAsignaturasDiaweb(codigo_titulacion) {
+  getAsignaturasTitulacion(codigo_titulacion) {
     let data = { codigo: codigo_titulacion };
 
-    return axios.post(ASIGNATURAS_API_BASE_URL, data);
+    return axios.post(ASIGNATURAS_TITULACION_API, data);
   }
   getAsignaturas() {
     return axios.get(ASIGNATURAS_API);

@@ -35,9 +35,9 @@ export default {
         this.titulaciones = response.data;
 
         this.titulaciones.sort((a, b) => {
-          if (a.codigo < b.codigo) return -1;
+          if (a.centro < b.centro) return -1;
 
-          if (a.codigo > b.codigo) return 1;
+          if (a.centro > b.centro) return 1;
         });
 
         this.datosCargados = true;

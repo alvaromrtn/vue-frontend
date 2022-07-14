@@ -6,7 +6,6 @@
       <br />
       <GraficoProfesores :datos="this.datosGrafico"></GraficoProfesores>
     </div>
-
     <div v-else>
       <ProcesoCarga />
     </div>
