@@ -127,7 +127,7 @@ import Grupos_Service from "../services/Grupos_Service";
 import GruposAsignaturaGrafico from "./GruposAsignaturaGrafico";
 import ProcesoCarga from "./ProcesoCarga";
 
-import CrearDataset_Component from "../components/CrearDataset_Component";
+import CrearDatasetGrupos_Component from "../components/CrearDatasetGrupos_Component";
 
 export default {
   name: "GruposAsignaturaScript",
@@ -154,12 +154,12 @@ export default {
       Grupos_Service.getGruposTeoria(codigo_asignatura).then((response) => {
         this.gruposTeoria = response.data;
 
-        this.tipoGraficoTeoria = "bar"; // -> bar | -> line | -> radar | -> polarArea
+        this.tipoGraficoTeoria = "horizontalBar"; // -> bar | -> line | -> radar | -> polarArea
 
-        this.datasetTeoria = CrearDataset_Component.getDataset(
+        this.datasetTeoria = CrearDatasetGrupos_Component.getDataset(
           this.gruposTeoria
         );
-
+        console.log(this.datasetTeoria);
         for (var i = 0; i < this.datasetTeoria.length; i++) {
           this.arrayNumeroProfesoresTeoria.push(i);
         }
@@ -171,7 +171,7 @@ export default {
 
         this.tipoGraficoPractica = "bar"; // -> bar | -> line | -> radar | -> polarArea
 
-        this.datasetPractica = CrearDataset_Component.getDataset(
+        this.datasetPractica = CrearDatasetGrupos_Component.getDataset(
           this.gruposPractica
         );
 

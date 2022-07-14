@@ -1,4 +1,4 @@
-class CrearDataset_Component {
+class CrearDatasetGrupos_Component {
   getDataset(grupos) {
     let num_data = 0;
     let noExiste = true;
@@ -41,4 +41,4 @@ class CrearDataset_Component {
   }
 }
 
-export default new CrearDataset_Component();
+export default new CrearDatasetGrupos_Component();
