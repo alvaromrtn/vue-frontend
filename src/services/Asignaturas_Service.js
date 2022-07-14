@@ -1,21 +1,20 @@
 import axios from "axios";
 
-const ASIGNATURAS_API_BASE_URL = "http://localhost:8080/api/asignaturas";
+const ASIGNATURAS_API_BASE_URL = "http://localhost:8080/api/asignaturas_diaweb";
 
-const ASIGNATURASEXCEL_API_BASE_URL =
-  "http://localhost:8080/api/asignaturas_excel";
+const ASIGNATURAS_API = "http://localhost:8080/api/asignaturas";
 
 const ASIGNATURASPROFESOREXCEL_API_BASE_URL =
   "http://localhost:8080/api/asignaturasProfesor_excel";
 
 class Asignaturas_Service {
-  getAsignaturas(codigo_titulacion) {
+  getAsignaturasDiaweb(codigo_titulacion) {
     let data = { codigo: codigo_titulacion };
 
     return axios.post(ASIGNATURAS_API_BASE_URL, data);
   }
-  getAsignaturasExcel() {
-    return axios.get(ASIGNATURASEXCEL_API_BASE_URL);
+  getAsignaturas() {
+    return axios.get(ASIGNATURAS_API);
   }
   getAsignaturasProfesorExcel(columna_profesor) {
     let data = { columna: columna_profesor };

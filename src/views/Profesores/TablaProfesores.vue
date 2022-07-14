@@ -3,8 +3,9 @@
     <div>
       <span>Buscar por: </span>
       <select v-model="campoBusqueda">
-        <option>nombre</option>
-        <option>horas</option>
+        <option value="nombre">NOMBRE</option>
+        <option value="apellidos">APELLIDOS</option>
+        <option value="horas">HORAS</option>
       </select>
     </div>
     <div>
@@ -32,7 +33,7 @@
 import { ref } from "vue";
 
 export default {
-  name: "TablaScript",
+  name: "TablaProfesoresScript",
   props: {
     datosTabla: Array,
   },
@@ -43,13 +44,13 @@ export default {
           text: "NOMBRE",
           value: "nombre",
           sortable: true,
-          width: 5,
+          width: 10,
         },
         {
           text: "APELLIDOS",
           value: "apellidos",
           sortable: true,
-          width: 5,
+          width: 10,
         },
         {
           text: "HORAS",
@@ -59,7 +60,7 @@ export default {
         },
       ],
 
-      campoBusqueda: ref("nombre"),
+      campoBusqueda: ref("apellidos"),
       valorBusqueda: ref(""),
 
       elementosPorPagina: 10,

@@ -24,7 +24,7 @@ const routes = [
   {
     path: "/asignaturas",
     name: "asignaturas",
-    component: () => import("../views/Asignaturas.vue"),
+    component: () => import("../views/Asignaturas/Asignaturas.vue"),
   },
   {
     path: "/titulaciones",
