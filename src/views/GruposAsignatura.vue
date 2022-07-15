@@ -9,12 +9,6 @@
       <div name="graficoGruposTeoria">
         <div v-if="this.datasetTeoria.length !== 0">
           <h2 class="title is-5">GRÁFICO GRUPOS TEORÍA</h2>
-          <grupos-asignatura-grafico
-            :dataset="this.datasetTeoria"
-            :tipoGrafico="this.tipoGraficoTeoria"
-            :arrayNumeroProfesores="this.arrayNumeroProfesoresTeoria"
-          >
-          </grupos-asignatura-grafico>
         </div>
       </div>
 
@@ -71,12 +65,6 @@
       <div name="graficoGruposPractica">
         <div v-if="this.datasetPractica.length !== 0">
           <h2 class="title is-5">GRÁFICO GRUPOS PRÁCTICA</h2>
-          <grupos-asignatura-grafico
-            :dataset="this.datasetPractica"
-            :tipoGrafico="this.tipoGraficoPractica"
-            :arrayNumeroProfesores="this.arrayNumeroProfesoresPractica"
-          >
-          </grupos-asignatura-grafico>
         </div>
       </div>
 
@@ -131,18 +119,14 @@
 </template>
 
 <script>
-import Grupos_Service from "../services/Grupos_Service";
-import GruposAsignaturaGrafico from "./GruposAsignaturaGrafico";
-import ProcesoCarga from "./ProcesoCarga";
+import Grupos_Service from "../services/Grupos_Service.js";
+import ProcesoCarga from "./ProcesoCarga.vue";
 
-import CrearDatasetGrupos_Component from "../components/CrearDatasetGrupos_Component";
-
-import GruposGrafico from "./GruposGrafico";
+import GruposGrafico from "./GruposGrafico.vue";
 
 export default {
   name: "GruposAsignaturaScript",
   components: {
-    GruposAsignaturaGrafico,
     ProcesoCarga,
     GruposGrafico,
   },
@@ -216,9 +200,6 @@ export default {
 
         this.tipoGraficoTeoria = "horizontalBar"; // -> bar | -> line | -> radar | -> polarArea
 
-        this.datasetTeoria = CrearDatasetGrupos_Component.getDataset(
-          this.gruposTeoria
-        );
         console.log(this.datasetTeoria);
         for (var i = 0; i < this.datasetTeoria.length; i++) {
           this.arrayNumeroProfesoresTeoria.push(i);
@@ -267,10 +248,6 @@ export default {
         this.gruposPractica = response.data;
 
         this.tipoGraficoPractica = "bar"; // -> bar | -> line | -> radar | -> polarArea
-
-        this.datasetPractica = CrearDatasetGrupos_Component.getDataset(
-          this.gruposPractica
-        );
 
         for (var i = 0; i < this.datasetPractica.length; i++) {
           this.arrayNumeroProfesoresPractica.push(i);

@@ -1,21 +1,22 @@
 <template>
-  <br />
-  <div class="container">
-    <div v-if="datosCargados">
-      <TablaTitulaciones :datosTabla="this.titulaciones"></TablaTitulaciones>
-      <br />
+  <main id="titulaciones">
+    <br />
+    <div class="container">
+      <div v-if="datosCargados">
+        <TablaTitulaciones :datosTabla="this.titulaciones"></TablaTitulaciones>
+        <br />
+      </div>
+      <div v-else>
+        <ProcesoCarga />
+      </div>
     </div>
-
-    <div v-else>
-      <ProcesoCarga />
-    </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import Titulaciones_Service from "../../services/Titulaciones_Service";
-import TablaTitulaciones from "./TablaTitulaciones";
-import ProcesoCarga from "../ProcesoCarga";
+import Titulaciones_Service from "../../services/Titulaciones_Service.js";
+import TablaTitulaciones from "./TablaTitulaciones.vue";
+import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "TitulacionesScript",

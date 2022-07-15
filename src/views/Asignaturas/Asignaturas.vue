@@ -1,20 +1,22 @@
 <template>
-  <br />
-  <div class="container">
-    <div v-if="datosCargados">
-      <TablaAsignaturas :datosTabla="this.asignaturas"></TablaAsignaturas>
-      <br />
+  <main id="asignaturas">
+    <br />
+    <div class="container">
+      <div v-if="datosCargados">
+        <TablaAsignaturas :datosTabla="this.asignaturas"></TablaAsignaturas>
+        <br />
+      </div>
+      <div v-else>
+        <ProcesoCarga />
+      </div>
     </div>
-    <div v-else>
-      <ProcesoCarga />
-    </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import Asignaturas_Service from "../../services/Asignaturas_Service";
-import TablaAsignaturas from "./TablaAsignaturas";
-import ProcesoCarga from "../ProcesoCarga";
+import Asignaturas_Service from "../../services/Asignaturas_Service.js";
+import TablaAsignaturas from "./TablaAsignaturas.vue";
+import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "AsignaturasScript",

@@ -1,23 +1,25 @@
 <template>
-  <br />
-  <div class="container">
-    <div v-if="datosCargados">
-      <TablaProfesores :datosTabla="this.profesores"></TablaProfesores>
-      <br />
-      <GraficoProfesores :datos="this.datosGrafico"></GraficoProfesores>
+  <main id="profesores">
+    <br />
+    <div class="container">
+      <div v-if="datosCargados">
+        <TablaProfesores :datosTabla="this.profesores"></TablaProfesores>
+        <br />
+        <GraficoProfesores :datos="this.datosGrafico"></GraficoProfesores>
+      </div>
+      <div v-else>
+        <ProcesoCarga />
+      </div>
     </div>
-    <div v-else>
-      <ProcesoCarga />
-    </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import Profesor_Service from "../../services/Profesor_Service";
-import TablaProfesores from "./TablaProfesores";
-import GraficoProfesores from "./GraficoProfesores";
-import CrearDatasetProfesores_Component from "../../components/CrearDatasetProfesores_Component";
-import ProcesoCarga from "../ProcesoCarga";
+import Profesor_Service from "../../services/Profesor_Service.js";
+import TablaProfesores from "./TablaProfesores.vue";
+import GraficoProfesores from "./GraficoProfesores.vue";
+import CrearDatasetProfesores_Component from "../../components/CrearDatasetProfesores_Component.js";
+import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "ProfesoresScript",

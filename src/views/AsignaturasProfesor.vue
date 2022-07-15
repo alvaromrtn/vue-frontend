@@ -1,21 +1,19 @@
 <template>
   <div class="container">
     <h1 class="text-center">
-      <p>
-        {{ $t("asignaturas.asignaturas") }}
-      </p>
+      <p>ASIGNATURAS</p>
     </h1>
     <div v-if="datosCargados">
       <table class="table table-striped table-responsive">
         <thead>
-          <th>{{ $t("asignaturas.tabla.codigo") }}</th>
-          <th>{{ $t("asignaturas.tabla.nombre") }}</th>
-          <th>{{ $t("asignaturas.tabla.curso") }}</th>
-          <th>{{ $t("asignaturas.tabla.cuatrimestre") }}</th>
-          <th>{{ $t("asignaturas.tabla.caracter") }}</th>
-          <th>{{ $t("asignaturas.tabla.creditos_t") }}</th>
-          <th>{{ $t("asignaturas.tabla.creditos_p") }}</th>
-          <th>{{ $t("asignaturas.tabla.titulacion") }}</th>
+          <th>CÓDIGO</th>
+          <th>NOMBRE</th>
+          <th>CURSO</th>
+          <th>CUATRIMESTRE</th>
+          <th>CARACTER</th>
+          <th>CREDITOS_T</th>
+          <th>CREDITOS_P</th>
+          <th>TITULACIÓN</th>
           <th>HORAS TOTALES</th>
         </thead>
         <tbody>
@@ -43,8 +41,8 @@
 </template>
 
 <script>
-import Asignaturas_Service from "../services/Asignaturas_Service";
-import ProcesoCarga from "./ProcesoCarga";
+import Asignaturas_Service from "../services/Asignaturas_Service.js";
+import ProcesoCarga from "./ProcesoCarga.vue";
 
 export default {
   name: "AsignaturasProfesorScript",

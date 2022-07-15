@@ -1,13 +1,6 @@
 <template>
-  <div class="container">
-    <br />
-    <br />
-    <h1 class="text-center">HOME</h1>
-  </div>
+  <main id="home">
+    <h1>HOME</h1>
+    <p>Página Home</p>
+  </main>
 </template>
-
-<script>
-export default {
-  name: "HomeScript",
-};
-</script>

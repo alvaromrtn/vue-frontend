@@ -1,30 +1,30 @@
 <template>
-  <div class="container">
-    <div v-if="datosCargados">
-      <h1 class="text-center">
-        <p>
-          {{ this.asignaturas[0].titulacionAsignatura }}
-        </p>
-        <p>
-          {{ $t("asignaturas.asignaturas") }}
-        </p>
-      </h1>
-      <TablaAsignaturasTitulacion
-        :datosTabla="this.asignaturas"
-        :codigoTitulacion="this.$route.params.codigo_titulacion"
-      ></TablaAsignaturasTitulacion>
-      <br />
+  <main id="asignaturasIitulacion">
+    <div class="container">
+      <div v-if="datosCargados">
+        <h1 class="text-center">
+          <p>
+            {{ this.asignaturas[0].titulacionAsignatura }}
+          </p>
+          <p>ASIGNATURAS</p>
+        </h1>
+        <TablaAsignaturasTitulacion
+          :datosTabla="this.asignaturas"
+          :codigoTitulacion="this.$route.params.codigo_titulacion"
+        ></TablaAsignaturasTitulacion>
+        <br />
+      </div>
+      <div v-else>
+        <ProcesoCarga />
+      </div>
     </div>
-    <div v-else>
-      <ProcesoCarga />
-    </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import Asignaturas_Service from "../../services/Asignaturas_Service";
-import TablaAsignaturasTitulacion from "./TablaAsignaturasTitulacion";
-import ProcesoCarga from "../ProcesoCarga";
+import Asignaturas_Service from "../../services/Asignaturas_Service.js";
+import TablaAsignaturasTitulacion from "./TablaAsignaturasTitulacion.vue";
+import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "AsignaturasTitulacionScript",

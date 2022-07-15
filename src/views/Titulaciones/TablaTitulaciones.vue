@@ -3,8 +3,8 @@
     <div>
       <span>Buscar por: </span>
       <select v-model="campoBusqueda">
-        <option value="nombre">NOMBRE</option>
         <option value="codigo">CÓDIGO</option>
+        <option value="nombre">NOMBRE</option>
         <option value="centro">CENTRO</option>
       </select>
     </div>
