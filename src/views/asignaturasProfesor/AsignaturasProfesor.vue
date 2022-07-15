@@ -1,17 +1,11 @@
 <template>
-  <main id="asignaturasIitulacion">
+  <main id="asignaturasProfesor">
+    <br />
     <div class="container">
       <div v-if="datosCargados">
-        <h1 class="text-center">
-          <p>
-            {{ this.asignaturas[0].titulacionAsignatura }}
-          </p>
-          <p>ASIGNATURAS</p>
-        </h1>
-        <TablaAsignaturasTitulacion
+        <TablaAsignaturasProfesor
           :datosTabla="this.asignaturas"
-          :codigoTitulacion="this.$route.params.codigo_titulacion"
-        ></TablaAsignaturasTitulacion>
+        ></TablaAsignaturasProfesor>
         <br />
       </div>
       <div v-else>
@@ -23,11 +17,11 @@
 
 <script>
 import Asignaturas_Service from "../../services/Asignaturas_Service.js";
-import TablaAsignaturasTitulacion from "./TablaAsignaturasTitulacion.vue";
+import TablaAsignaturasProfesor from "./TablaAsignaturasProfesor.vue";
 import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
-  name: "AsignaturasTitulacionScript",
+  name: "AsignaturasProfesorScript",
   data() {
     return {
       asignaturas: [],
@@ -35,14 +29,20 @@ export default {
     };
   },
   components: {
-    TablaAsignaturasTitulacion,
+    TablaAsignaturasProfesor,
     ProcesoCarga,
   },
   methods: {
-    getAsignaturasTitulacion(codigo_titulacion) {
-      Asignaturas_Service.getAsignaturasTitulacion(codigo_titulacion).then(
+    getAsignaturasProfesor(columna_profesor) {
+      Asignaturas_Service.getAsignaturasProfesor(columna_profesor).then(
         (response) => {
           this.asignaturas = response.data;
+
+          this.asignaturas.sort((a, b) => {
+            if (a.nombreTitulacion < b.nombreTitulacion) return -1;
+
+            if (a.nombreTitulacion > b.nombreTitulacion) return 1;
+          });
 
           this.datosCargados = true;
         }
@@ -50,7 +50,7 @@ export default {
     },
   },
   created() {
-    this.getAsignaturasTitulacion(this.$route.params.codigo_titulacion);
+    this.getAsignaturasProfesor(this.$route.params.columna_profesor);
   },
 };
 </script>

@@ -66,7 +66,7 @@ export default {
       elementosPorPagina: 10,
 
       navegarProfesor: (item) => {
-        var ruta = "/profesor/" + item.id;
+        var ruta = "/profesor/" + item.id + "/asignaturas";
         this.$router.push(ruta);
       },
     };

@@ -5,8 +5,8 @@ const ASIGNATURAS_TITULACION_API =
 
 const ASIGNATURAS_API = "http://localhost:8080/api/asignaturas";
 
-const ASIGNATURASPROFESOREXCEL_API_BASE_URL =
-  "http://localhost:8080/api/asignaturasProfesor_excel";
+const ASIGNATURAS_PROFESOR_API =
+  "http://localhost:8080/api/asignaturasProfesor";
 
 class Asignaturas_Service {
   getAsignaturasTitulacion(codigo_titulacion) {
@@ -17,10 +17,10 @@ class Asignaturas_Service {
   getAsignaturas() {
     return axios.get(ASIGNATURAS_API);
   }
-  getAsignaturasProfesorExcel(columna_profesor) {
+  getAsignaturasProfesor(columna_profesor) {
     let data = { columna: columna_profesor };
 
-    return axios.post(ASIGNATURASPROFESOREXCEL_API_BASE_URL, data);
+    return axios.post(ASIGNATURAS_PROFESOR_API, data);
   }
 }
 
