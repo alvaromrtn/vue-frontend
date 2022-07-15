@@ -43,7 +43,7 @@ const router = createRouter({
     {
       path: "/titulacion/:codigo_titulacion/asignatura/:codigo_asignatura",
       name: "asignatura",
-      component: () => import("../views/GruposAsignatura.vue"),
+      component: () => import("../views/gruposAsignatura/GruposAsignatura.vue"),
     },
     {
       path: "/ajustes",

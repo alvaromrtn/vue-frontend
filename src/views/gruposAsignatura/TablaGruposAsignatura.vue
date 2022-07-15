@@ -3,9 +3,8 @@
     <div>
       <span>Buscar por: </span>
       <select v-model="campoBusqueda">
-        <option value="codigoAsignatura">CÓDIGO</option>
-        <option value="nombreAsignatura">NOMBRE</option>
-        <option value="cursoAsignatura">CURSO</option>
+        <option value="nombreGrupo">GRUPO</option>
+        <option value="nombreProfesor">PROFESOR</option>
       </select>
     </div>
     <div>
@@ -25,7 +24,6 @@
     :search-field="campoBusqueda"
     :search-value="valorBusqueda"
     :rows-per-page="elementosPorPagina"
-    @click-row="navegarAsignatura"
   ></EasyDataTable>
 </template>
 
@@ -33,77 +31,91 @@
 import { ref } from "vue";
 
 export default {
-  name: "TablaAsignaturasScript",
+  name: "TablaProfesoresScript",
   props: {
     datosTabla: Array,
-    codigoTitulacion: String,
   },
   data() {
     return {
       cabeceras: [
         {
-          text: "CÓDIGO",
-          value: "codigoAsignatura",
+          text: "C. GRUPO",
+          value: "codigoGrupo",
           sortable: true,
-          width: 10,
+          width: 5,
         },
         {
-          text: "NOMBRE",
-          value: "nombreAsignatura",
+          text: "GRUPO",
+          value: "nombreGrupo",
           sortable: true,
-          width: 10,
+          width: 5,
         },
         {
-          text: "CURSO",
-          value: "cursoAsignatura",
+          text: "C. AULA",
+          value: "codigoAula",
+          sortable: true,
+          width: 5,
+        },
+        {
+          text: "AULA",
+          value: "nombreAula",
+          sortable: true,
+          width: 5,
+        },
+        {
+          text: "C. PROFESOR",
+          value: "codigoProfesor",
+          sortable: true,
+          width: 5,
+        },
+        {
+          text: "PROFESOR",
+          value: "nombreProfesor",
           sortable: true,
           width: 5,
         },
         {
           text: "CUATRIMESTRE",
-          value: "periodoAsignatura",
+          value: "periodo",
           sortable: true,
           width: 5,
         },
         {
-          text: "CARÁCTER",
-          value: "caracterAsignatura",
+          text: "DÍA",
+          value: "horarioDiaSemana",
           sortable: true,
           width: 5,
         },
         {
-          text: "CRÉDITOS TEORÍA",
-          value: "creditosTeoria",
+          text: "H. INICIO",
+          value: "horarioHoraInicio",
           sortable: true,
           width: 5,
         },
         {
-          text: "CRÉDITOS PRÁCTICA",
-          value: "creditosPractica",
+          text: "H. SALIDA",
+          value: "horarioHoraFin",
           sortable: true,
           width: 5,
         },
         {
-          text: "RESPONSABLE",
-          value: "responsableAsignatura",
+          text: "EDIFICIO",
+          value: "nombreEdificio",
+          sortable: true,
+          width: 5,
+        },
+        {
+          text: "ALUMNOS",
+          value: "numeroAlumnos",
           sortable: true,
           width: 5,
         },
       ],
 
-      campoBusqueda: ref("nombreAsignatura"),
+      campoBusqueda: ref("nombreGrupo"),
       valorBusqueda: ref(""),
 
       elementosPorPagina: 10,
-
-      navegarAsignatura: (item) => {
-        var ruta =
-          "/titulacion/" +
-          this.codigoTitulacion +
-          "/asignatura/" +
-          item.codigoAsignatura;
-        this.$router.push(ruta);
-      },
     };
   },
 };

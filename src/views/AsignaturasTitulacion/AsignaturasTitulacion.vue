@@ -8,6 +8,7 @@
           </p>
           <p>ASIGNATURAS</p>
         </h1>
+        <br />
         <TablaAsignaturasTitulacion
           :datosTabla="this.asignaturas"
           :codigoTitulacion="this.$route.params.codigo_titulacion"
