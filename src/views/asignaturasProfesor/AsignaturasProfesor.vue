@@ -1,8 +1,15 @@
 <template>
   <main id="asignaturasProfesor">
-    <br />
+    <div v-if="nombreProfesorCargado">
+      <h1>
+        {{ this.nombreProfesor }}
+      </h1>
+      <br />
+    </div>
     <div class="container">
       <div v-if="datosCargados">
+        <h2>ASIGNATURAS</h2>
+        <br />
         <TablaAsignaturasProfesor
           :datosTabla="this.asignaturas"
         ></TablaAsignaturasProfesor>
@@ -17,6 +24,7 @@
 
 <script>
 import Asignaturas_Service from "../../services/Asignaturas_Service.js";
+import Profesores_Service from "../../services/Profesores_Service.js";
 import TablaAsignaturasProfesor from "./TablaAsignaturasProfesor.vue";
 import ProcesoCarga from "../ProcesoCarga.vue";
 
@@ -26,6 +34,8 @@ export default {
     return {
       asignaturas: [],
       datosCargados: false,
+      nombreProfesor: "",
+      nombreProfesorCargado: false,
     };
   },
   components: {
@@ -48,9 +58,19 @@ export default {
         }
       );
     },
+    getProfesorNombre(columna_profesor) {
+      Profesores_Service.getProfesorNombre(columna_profesor).then(
+        (response) => {
+          this.nombreProfesor = response.data;
+
+          this.nombreProfesorCargado = true;
+        }
+      );
+    },
   },
   created() {
     this.getAsignaturasProfesor(this.$route.params.columna_profesor);
+    this.getProfesorNombre(this.$route.params.columna_profesor);
   },
 };
 </script>

@@ -2,12 +2,11 @@
   <main id="asignaturasIitulacion">
     <div class="container">
       <div v-if="datosCargados">
-        <h1 class="text-center">
-          <p>
-            {{ this.asignaturas[0].titulacionAsignatura }}
-          </p>
-          <p>ASIGNATURAS</p>
+        <h1>
+          {{ this.asignaturas[0].titulacionAsignatura }}
         </h1>
+        <br />
+        <h2>ASIGNATURAS</h2>
         <br />
         <TablaAsignaturasTitulacion
           :datosTabla="this.asignaturas"

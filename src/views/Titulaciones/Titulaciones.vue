@@ -1,5 +1,6 @@
 <template>
   <main id="titulaciones">
+    <h1>TITULACIONES</h1>
     <br />
     <div class="container">
       <div v-if="datosCargados">

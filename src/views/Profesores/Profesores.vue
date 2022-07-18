@@ -1,10 +1,13 @@
 <template>
   <main id="profesores">
+    <h1>PROFESORES</h1>
     <br />
     <div class="container">
       <div v-if="datosCargados">
         <TablaProfesores :datosTabla="this.profesores"></TablaProfesores>
         <br />
+        <br />
+        <h2>GRÁFICO SEGÚN HORAS POR PROFESOR</h2>
         <GraficoProfesores :datos="this.datosGrafico"></GraficoProfesores>
       </div>
       <div v-else>
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-import Profesor_Service from "../../services/Profesor_Service.js";
+import Profesores_Service from "../../services/Profesores_Service.js";
 import TablaProfesores from "./TablaProfesores.vue";
 import GraficoProfesores from "./GraficoProfesores.vue";
 import CrearDatasetProfesores_Component from "../../components/CrearDatasetProfesores_Component.js";
@@ -37,7 +40,7 @@ export default {
   },
   methods: {
     getProfesores() {
-      Profesor_Service.getProfesores().then((response) => {
+      Profesores_Service.getProfesores().then((response) => {
         this.profesores = response.data;
 
         this.profesores.sort((a, b) => {

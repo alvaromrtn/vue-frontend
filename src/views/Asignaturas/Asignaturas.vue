@@ -1,5 +1,6 @@
 <template>
   <main id="asignaturas">
+    <h1>ASIGNATURAS</h1>
     <br />
     <div class="container">
       <div v-if="datosCargados">
