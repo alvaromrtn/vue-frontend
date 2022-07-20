@@ -21,7 +21,7 @@ class CrearDatasetGrupos_Component {
       },
       series: [
         {
-          name: "Horas",
+          name: "",
           data: [],
         },
       ],

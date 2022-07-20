@@ -8,8 +8,6 @@
     </div>
 
     <div v-if="datosCargadosTeoria">
-      <h2>GRUPOS DE TEORÍA</h2>
-      <br />
       <TablaGruposAsignatura
         :datosTabla="this.gruposTeoria"
       ></TablaGruposAsignatura>
@@ -69,7 +67,7 @@
 import Grupos_Service from "../../services/Grupos_Service.js";
 import TablaGruposAsignatura from "./TablaGruposAsignatura.vue";
 import GraficoGruposAsignatura from "./GraficoGruposAsignatura.vue";
-import CrearDatasetGruposAsignatura_Component from "../../components/CrearDatasetGruposAsignatura_Component.js";
+import DatasetGraficoDonut from "../../components/DatasetGraficoDonut_Component.js";
 import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
@@ -100,8 +98,7 @@ export default {
           if (a.nombreGrupo > b.nombreGrupo) return 1;
         });
 
-        this.datosGraficoTeoria =
-          CrearDatasetGruposAsignatura_Component.getDataset();
+        this.datosGraficoTeoria = DatasetGraficoDonut.getDataset();
 
         // Se crea una lista de objetos con nombreGrupo y numeroAlumnos:
         let listaObjetos = [];
@@ -129,7 +126,7 @@ export default {
         this.datosGraficoTeoria.options.labels = listaNombreGrupo;
         this.datosGraficoTeoria.series = listaNumeroAlumnos;
 
-        this.datosCargadosTeoria = true;
+        if (this.gruposTeoria.length != 0) this.datosCargadosTeoria = true;
       });
       Grupos_Service.getGruposPractica(codigo_asignatura).then((response) => {
         this.gruposPractica = response.data;
@@ -140,8 +137,7 @@ export default {
           if (a.nombreGrupo > b.nombreGrupo) return 1;
         });
 
-        this.datosGraficoPractica =
-          CrearDatasetGruposAsignatura_Component.getDataset();
+        this.datosGraficoPractica = DatasetGraficoDonut.getDataset();
 
         // Se crea una lista de objetos con nombreGrupo y numeroAlumnos:
         let listaObjetos = [];
@@ -169,7 +165,7 @@ export default {
         this.datosGraficoPractica.options.labels = listaNombreGrupo;
         this.datosGraficoPractica.series = listaNumeroAlumnos;
 
-        this.datosCargadosPractica = true;
+        if (this.gruposPractica.length != 0) this.datosCargadosPractica = true;
       });
     },
   },

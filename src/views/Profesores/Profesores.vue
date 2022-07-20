@@ -7,7 +7,7 @@
         <TablaProfesores :datosTabla="this.profesores"></TablaProfesores>
         <br />
         <br />
-        <h2>GRÁFICO SEGÚN HORAS POR PROFESOR</h2>
+        <h2>GRÁFICO SEGÚN EL NÚMERO DE HORAS POR PROFESOR</h2>
         <GraficoProfesores :datos="this.datosGrafico"></GraficoProfesores>
       </div>
       <div v-else>
@@ -21,7 +21,7 @@
 import Profesores_Service from "../../services/Profesores_Service.js";
 import TablaProfesores from "./TablaProfesores.vue";
 import GraficoProfesores from "./GraficoProfesores.vue";
-import CrearDatasetProfesores_Component from "../../components/CrearDatasetProfesores_Component.js";
+import DatasetGraficoBar from "../../components/DatasetGraficoBar_Component.js";
 import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
@@ -49,7 +49,7 @@ export default {
           if (a.horas > b.horas) return -1;
         });
 
-        this.datosGrafico = CrearDatasetProfesores_Component.getDataset();
+        this.datosGrafico = DatasetGraficoBar.getDataset();
 
         let listaProfesores = [];
         let listaHoras = [];
@@ -61,6 +61,7 @@ export default {
 
         this.datosGrafico.options.xaxis.categories = listaProfesores;
         this.datosGrafico.series[0].data = listaHoras;
+        this.datosGrafico.series[0].name = "Horas";
 
         this.datosCargados = true;
       });
