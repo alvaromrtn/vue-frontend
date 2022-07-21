@@ -1,5 +1,5 @@
 <template>
-  <main id="asignaturasProfesor">
+  <main id="asignaturasProfesor" style="width: 1000px">
     <div v-if="nombreProfesorCargado">
       <h1>
         {{ this.nombreProfesor }}

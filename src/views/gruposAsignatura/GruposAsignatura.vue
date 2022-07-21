@@ -1,5 +1,5 @@
 <template>
-  <main id="gruposAsignatura">
+  <main id="gruposAsignatura" style="width: 1000px">
     <div v-if="datosCargadosTeoria">
       <h1>
         {{ this.gruposTeoria[0].nombreAsignatura }}
@@ -19,7 +19,7 @@
     <br />
 
     <div v-if="datosCargadosTeoria">
-      <h2>GRÁFICOS SEGÚN ALUMNOS POR GRUPO</h2>
+      <h2>GRÁFICOS SEGÚN EL NÚMERO DE ALUMNOS POR GRUPO</h2>
       <br />
     </div>
 

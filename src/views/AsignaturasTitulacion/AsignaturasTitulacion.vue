@@ -1,5 +1,5 @@
 <template>
-  <main id="asignaturasIitulacion">
+  <main id="asignaturasIitulacion" style="width: 1000px">
     <div class="container">
       <div v-if="datosCargados">
         <h1>

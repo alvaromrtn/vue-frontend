@@ -1,5 +1,5 @@
 <template>
-  <main id="titulaciones">
+  <main id="titulaciones" style="width: 1000px">
     <h1>TITULACIONES</h1>
     <br />
     <div class="container">

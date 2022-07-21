@@ -1,5 +1,5 @@
 <template>
-  <main id="profesores">
+  <main id="profesores" style="width: 1000px">
     <h1>PROFESORES</h1>
     <br />
     <div class="container">

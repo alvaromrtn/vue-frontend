@@ -1,13 +1,7 @@
 <template>
-  <aside :class="`${expandido ? 'is-expanded' : ''}`">
+  <aside class="is-expanded">
     <div class="logo">
       <img :src="logoURL" alt="logo" />
-    </div>
-
-    <div class="menu-toggle-wrap">
-      <button class="menu-toggle" @click="expandirMenu">
-        <span class="material-icons">keyboard_double_arrow_right</span>
-      </button>
     </div>
 
     <h3>MENÚ</h3>
@@ -65,12 +59,11 @@ aside {
   background-color: var(--dark);
   color: var(--light);
 
-  width: calc(2rem + 32px);
+  width: 5rem;
   overflow: hidden;
   min-height: 100vh;
+  min-width: 200px;
   padding: 1rem;
-
-  transition: 0.2s ease-in-out;
 
   .flex {
     flex: 1 1 0%;
@@ -80,7 +73,7 @@ aside {
     margin-bottom: 1rem;
 
     img {
-      width: 2rem;
+      width: 5rem;
     }
   }
 
@@ -165,26 +158,8 @@ aside {
     }
   }
 
-  .footer {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-
-    p {
-      font-size: 0.875rem;
-      color: var(--grey);
-    }
-  }
-
   &.is-expanded {
     width: var(--sidebar-width);
-
-    .menu-toggle-wrap {
-      top: -3rem;
-
-      .menu-toggle {
-        transform: rotate(-180deg);
-      }
-    }
 
     h3,
     .button .text {
@@ -196,15 +171,6 @@ aside {
         margin-right: 1rem;
       }
     }
-
-    .footer {
-      opacity: 0;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    position: absolute;
-    z-index: 99;
   }
 }
 </style>
