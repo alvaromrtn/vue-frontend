@@ -1,26 +1,26 @@
 import axios from "axios";
 
-const ASIGNATURAS_TITULACION_API =
-  "http://localhost:8080/api/asignaturasTitulacion";
+const HTTP = "http://";
+const IP = "localhost";
+const PUERTO = ":8080";
 
-const ASIGNATURAS_API = "http://localhost:8080/api/asignaturas";
-
-const ASIGNATURAS_PROFESOR_API =
-  "http://localhost:8080/api/asignaturasProfesor";
+const ASIGNATURAS_TITULACION_API = "/api/asignaturasTitulacion";
+const ASIGNATURAS_API = "/api/asignaturas";
+const ASIGNATURAS_PROFESOR_API = "/api/asignaturasProfesor";
 
 class Asignaturas_Service {
   getAsignaturasTitulacion(codigo_titulacion) {
     let data = { codigo: codigo_titulacion };
 
-    return axios.post(ASIGNATURAS_TITULACION_API, data);
+    return axios.post(HTTP + IP + PUERTO + ASIGNATURAS_TITULACION_API, data);
   }
   getAsignaturas() {
-    return axios.get(ASIGNATURAS_API);
+    return axios.get(HTTP + IP + PUERTO + ASIGNATURAS_API);
   }
   getAsignaturasProfesor(columna_profesor) {
     let data = { columna: columna_profesor };
 
-    return axios.post(ASIGNATURAS_PROFESOR_API, data);
+    return axios.post(HTTP + IP + PUERTO + ASIGNATURAS_PROFESOR_API, data);
   }
 }
 
