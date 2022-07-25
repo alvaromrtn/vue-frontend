@@ -20,7 +20,7 @@ const router = createRouter({
     },
     {
       path: "/profesor/:columna_profesor/asignaturas",
-      name: "profesor",
+      name: "asignaturasProfesor",
       component: () =>
         import("../views/asignaturasProfesor/AsignaturasProfesor.vue"),
     },
@@ -30,19 +30,25 @@ const router = createRouter({
       component: () => import("../views/asignaturas/Asignaturas.vue"),
     },
     {
+      path: "/asignatura/:id/profesores",
+      name: "profesoresAsignatura",
+      component: () =>
+        import("../views/profesoresAsignatura/ProfesoresAsignatura.vue"),
+    },
+    {
       path: "/titulaciones",
       name: "titulaciones",
       component: () => import("../views/titulaciones/Titulaciones.vue"),
     },
     {
       path: "/titulacion/:codigo_titulacion/asignaturas",
-      name: "titulacion",
+      name: "asignaturasTitulacion",
       component: () =>
         import("../views/asignaturasTitulacion/AsignaturasTitulacion.vue"),
     },
     {
       path: "/titulacion/:codigo_titulacion/asignatura/:codigo_asignatura",
-      name: "asignatura",
+      name: "gruposAsignatura",
       component: () => import("../views/gruposAsignatura/GruposAsignatura.vue"),
     },
     {

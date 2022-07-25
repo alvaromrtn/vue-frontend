@@ -97,11 +97,8 @@ export default {
       elementosPorPagina: 10,
 
       navegarAsignatura: (item) => {
-        console.log(item);
-        /*
-        var ruta = "/profesor/" + item.id;
+        var ruta = "/asignatura/" + item.id + "/profesores";
         this.$router.push(ruta);
-        */
       },
     };
   },
