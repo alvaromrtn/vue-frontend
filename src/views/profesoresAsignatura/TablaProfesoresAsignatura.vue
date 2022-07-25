@@ -66,15 +66,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.container-busqueda {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  gap: 20px 0px;
-  grid-auto-flow: row;
-  justify-items: center;
-}
-</style>
