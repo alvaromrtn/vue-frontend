@@ -56,13 +56,11 @@ const router = createRouter({
       name: "ajustes",
       component: () => import("../views/Ajustes.vue"),
     },
-    /*
     {
       path: "/:pathMatch(.*)*",
       name: "pageNotFound",
-      component: PageNotFound,
+      component: () => import("../views/PageNotFound.vue"),
     },
-    */
   ],
 });
 
