@@ -31,7 +31,7 @@
 import { ref } from "vue";
 
 export default {
-  name: "TablaProfesoresScript",
+  name: "TablaGruposAsignaturaScript",
   props: {
     datosTabla: Array,
   },

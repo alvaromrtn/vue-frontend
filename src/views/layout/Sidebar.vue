@@ -1,9 +1,7 @@
 <template>
   <aside class="sidebar">
     <div class="logo">
-      <center>
-        <img :src="logoURL" alt="logo" />
-      </center>
+      <img :src="logoURL" alt="logo" />
     </div>
 
     <h3>MENÚ</h3>
@@ -52,6 +50,8 @@ aside {
 
   .logo {
     margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     img {
       width: 5rem;
     }

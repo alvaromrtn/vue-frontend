@@ -1,5 +1,5 @@
 <template>
-  <main id="profesores" style="width: 1000px">
+  <main id="profesoresAsignatura" style="width: 1000px">
     <div v-if="nombreAsignaturaCargado">
       <h1>
         {{ this.nombreAsignatura }}
@@ -37,7 +37,15 @@ import DatasetGraficoDonut from "../../components/DatasetGraficoDonut_Component.
 import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
-  name: "ProfesoresScript",
+  name: "ProfesoresAsignaturaScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Profesores Asignatura";
+      },
+    },
+  },
   data() {
     return {
       profesores: [],

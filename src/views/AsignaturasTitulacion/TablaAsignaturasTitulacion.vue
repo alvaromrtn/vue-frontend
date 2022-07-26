@@ -33,7 +33,7 @@
 import { ref } from "vue";
 
 export default {
-  name: "TablaAsignaturasScript",
+  name: "TablaAsignaturasTitulacionScript",
   props: {
     datosTabla: Array,
     codigoTitulacion: String,

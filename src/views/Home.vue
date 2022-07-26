@@ -4,3 +4,17 @@
     <p>Página Home</p>
   </main>
 </template>
+
+<script>
+export default {
+  name: "HomeScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Inicio";
+      },
+    },
+  },
+};
+</script>

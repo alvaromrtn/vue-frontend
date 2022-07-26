@@ -4,3 +4,17 @@
     <p>Página Contacto</p>
   </main>
 </template>
+
+<script>
+export default {
+  name: "ContactoScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Contacto";
+      },
+    },
+  },
+};
+</script>

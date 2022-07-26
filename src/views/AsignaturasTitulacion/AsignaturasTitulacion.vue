@@ -28,6 +28,14 @@ import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "AsignaturasTitulacionScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Asignaturas Titulación";
+      },
+    },
+  },
   data() {
     return {
       asignaturas: [],

@@ -27,6 +27,14 @@ import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "TitulacionesScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Titulaciones";
+      },
+    },
+  },
   data() {
     return {
       titulaciones: [],

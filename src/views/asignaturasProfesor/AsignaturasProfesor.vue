@@ -46,6 +46,14 @@ import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
   name: "AsignaturasProfesorScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Asignaturas Profesor";
+      },
+    },
+  },
   data() {
     return {
       asignaturas: [],

@@ -65,11 +65,13 @@ import NoExisteInformacion from "../NoExisteInformacion.vue";
 
 export default {
   name: "GruposAsignaturaScript",
-  components: {
-    TablaGruposAsignatura,
-    GraficoGruposAsignatura,
-    ProcesoCarga,
-    NoExisteInformacion,
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Grupos Asignatura";
+      },
+    },
   },
   data() {
     return {
@@ -80,6 +82,12 @@ export default {
       datosCargadosTeoria: false,
       datosCargadosPractica: false,
     };
+  },
+  components: {
+    TablaGruposAsignatura,
+    GraficoGruposAsignatura,
+    ProcesoCarga,
+    NoExisteInformacion,
   },
   methods: {
     getGrupos(codigo_asignatura) {

@@ -6,6 +6,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "PageNotFoundScript",
+  watch: {
+    title: {
+      immediate: true,
+      handler() {
+        document.title = "Página no encontrada";
+      },
+    },
+  },
+};
+</script>
+
 <style>
 .container {
   width: 100%;

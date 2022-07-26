@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "GraficoGruposScript",
+  name: "GraficoGruposAsignaturaScript",
   props: {
     datos: Object,
   },
