@@ -21,6 +21,7 @@ const router = createRouter({
     {
       path: "/profesor/:columna_profesor/asignaturas",
       name: "asignaturasProfesor",
+
       component: () =>
         import("../views/asignaturasProfesor/AsignaturasProfesor.vue"),
     },
@@ -50,11 +51,6 @@ const router = createRouter({
       path: "/titulacion/:codigo_titulacion/asignatura/:codigo_asignatura",
       name: "gruposAsignatura",
       component: () => import("../views/gruposAsignatura/GruposAsignatura.vue"),
-    },
-    {
-      path: "/ajustes",
-      name: "ajustes",
-      component: () => import("../views/Ajustes.vue"),
     },
     {
       path: "/:pathMatch(.*)*",
