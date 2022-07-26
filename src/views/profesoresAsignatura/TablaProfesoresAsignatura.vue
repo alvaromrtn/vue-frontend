@@ -24,6 +24,7 @@
     :search-field="campoBusqueda"
     :search-value="valorBusqueda"
     :rows-per-page="elementosPorPagina"
+    @click-row="navegarProfesor"
   ></EasyDataTable>
 </template>
 
@@ -62,6 +63,11 @@ export default {
       valorBusqueda: ref(""),
 
       elementosPorPagina: 10,
+
+      navegarProfesor: (item) => {
+        var ruta = "/profesor/" + item.id + "/asignaturas";
+        this.$router.push(ruta);
+      },
     };
   },
 };
