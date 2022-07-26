@@ -14,6 +14,20 @@
           :datosTabla="this.asignaturas"
         ></TablaAsignaturasProfesor>
         <br />
+
+        <div v-if="this.horasTotales != 0">
+          <p>
+            Horas totales: <b>{{ this.horasTotales }}</b>
+          </p>
+        </div>
+        <br />
+
+        <div v-if="datosGrafico.series.length != 0">
+          <h4>GRÁFICO SEGÚN EL NÚMERO DE HORAS POR ASIGNATURA</h4>
+          <GraficoAsignaturasProfesor
+            :datos="this.datosGrafico"
+          ></GraficoAsignaturasProfesor>
+        </div>
       </div>
       <div v-else>
         <ProcesoCarga />
@@ -26,6 +40,8 @@
 import Asignaturas_Service from "../../services/Asignaturas_Service.js";
 import Profesores_Service from "../../services/Profesores_Service.js";
 import TablaAsignaturasProfesor from "./TablaAsignaturasProfesor.vue";
+import GraficoAsignaturasProfesor from "./GraficoAsignaturasProfesor.vue";
+import DatasetGraficoDonut from "../../components/DatasetGraficoDonut_Component.js";
 import ProcesoCarga from "../ProcesoCarga.vue";
 
 export default {
@@ -36,10 +52,13 @@ export default {
       datosCargados: false,
       nombreProfesor: "",
       nombreProfesorCargado: false,
+      datosGrafico: {},
+      horasTotales: 0,
     };
   },
   components: {
     TablaAsignaturasProfesor,
+    GraficoAsignaturasProfesor,
     ProcesoCarga,
   },
   methods: {
@@ -49,10 +68,24 @@ export default {
           this.asignaturas = response.data;
 
           this.asignaturas.sort((a, b) => {
-            if (a.nombreTitulacion < b.nombreTitulacion) return -1;
+            if (a.horasTotales < b.horasTotales) return 1;
 
-            if (a.nombreTitulacion > b.nombreTitulacion) return 1;
+            if (a.horasTotales > b.horasTotales) return -1;
           });
+
+          this.datosGrafico = DatasetGraficoDonut.getDataset();
+
+          let listaAsignaturas = [];
+          let listaHoras = [];
+          for (let i = 0; i < this.asignaturas.length; i++) {
+            listaAsignaturas[i] = this.asignaturas[i].nombreAsignatura;
+            listaHoras[i] = this.asignaturas[i].horasTotales;
+            this.horasTotales =
+              this.horasTotales + this.asignaturas[i].horasTotales;
+          }
+
+          this.datosGrafico.options.labels = listaAsignaturas;
+          this.datosGrafico.series = listaHoras;
 
           this.datosCargados = true;
         }
