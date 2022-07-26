@@ -2,7 +2,7 @@
   <main id="profesores" style="width: 1000px">
     <div v-if="nombreAsignaturaCargado">
       <h1>
-        {{ this.nombreProfesor }}
+        {{ this.nombreAsignatura }}
       </h1>
       <br />
     </div>
@@ -30,6 +30,7 @@
 
 <script>
 import Profesores_Service from "../../services/Profesores_Service.js";
+import Asignaturas_Service from "../../services/Asignaturas_Service.js";
 import TablaProfesoresAsignatura from "./TablaProfesoresAsignatura.vue";
 import GraficoProfesoresAsignatura from "./GraficoProfesoresAsignatura.vue";
 import DatasetGraficoDonut from "../../components/DatasetGraficoDonut_Component.js";
@@ -41,6 +42,7 @@ export default {
     return {
       profesores: [],
       datosCargados: false,
+      nombreAsignatura: "",
       nombreAsignaturaCargado: false,
       datosGrafico: {},
     };
@@ -76,9 +78,17 @@ export default {
         this.datosCargados = true;
       });
     },
+    getAsignaturaNombre(id) {
+      Asignaturas_Service.getAsignaturaNombre(id).then((response) => {
+        this.nombreAsignatura = response.data;
+
+        this.nombreAsignaturaCargado = true;
+      });
+    },
   },
   created() {
     this.getProfesoresAsignatura(this.$route.params.id);
+    this.getAsignaturaNombre(this.$route.params.id);
   },
 };
 </script>
