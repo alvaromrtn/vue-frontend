@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="texto">
-      <h1>Error 404</h1>
+      <h1>No existe información</h1>
     </div>
   </div>
 </template>

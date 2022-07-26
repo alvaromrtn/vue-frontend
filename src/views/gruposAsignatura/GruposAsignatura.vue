@@ -1,62 +1,54 @@
 <template>
   <main id="gruposAsignatura" style="width: 1000px">
     <div v-if="datosCargadosTeoria">
-      <h1>
-        {{ this.gruposTeoria[0].nombreAsignatura }}
-      </h1>
-      <br />
-    </div>
+      <div v-if="gruposTeoria.length != 0">
+        <h1>
+          {{ this.gruposTeoria[0].nombreAsignatura }}
+        </h1>
 
-    <div v-if="datosCargadosTeoria">
-      <TablaGruposAsignatura
-        :datosTabla="this.gruposTeoria"
-      ></TablaGruposAsignatura>
-    </div>
-    <div v-else>
-      <ProcesoCarga />
-    </div>
+        <br />
 
-    <br />
+        <TablaGruposAsignatura
+          :datosTabla="this.gruposTeoria"
+        ></TablaGruposAsignatura>
 
-    <div v-if="datosCargadosTeoria">
-      <h2>GRÁFICOS SEGÚN EL NÚMERO DE ALUMNOS POR GRUPO</h2>
-      <br />
-    </div>
+        <br />
 
-    <div class="container-graficos">
-      <div>
-        <div v-if="datosCargadosTeoria">
-          <h4>TEORÍA:</h4>
-          <GraficoGruposAsignatura
-            :datos="this.datosGraficoTeoria"
-          ></GraficoGruposAsignatura>
+        <h2>GRÁFICOS SEGÚN EL NÚMERO DE ALUMNOS POR GRUPO</h2>
+        <br />
+
+        <div class="container-graficos">
+          <div>
+            <div v-if="datosGraficoTeoria.series.length != 0">
+              <h4>TEORÍA:</h4>
+              <GraficoGruposAsignatura
+                :datos="this.datosGraficoTeoria"
+              ></GraficoGruposAsignatura>
+            </div>
+          </div>
+          <div>
+            <div v-if="datosGraficoPractica.series.length != 0">
+              <h4>PRÁCTICA:</h4>
+              <GraficoGruposAsignatura
+                :datos="this.datosGraficoPractica"
+              ></GraficoGruposAsignatura>
+            </div>
+          </div>
         </div>
-        <div v-else>
-          <ProcesoCarga />
-        </div>
+
+        <br />
+
+        <h2>GRUPOS DE PRÁCTICA</h2>
+        <br />
+        <TablaGruposAsignatura
+          :datosTabla="this.gruposPractica"
+        ></TablaGruposAsignatura>
       </div>
-      <div>
-        <div v-if="datosCargadosPractica">
-          <h4>PRÁCTICA:</h4>
-          <GraficoGruposAsignatura
-            :datos="this.datosGraficoPractica"
-          ></GraficoGruposAsignatura>
-        </div>
-        <div v-else>
-          <ProcesoCarga />
-        </div>
+      <div v-else>
+        <NoExisteInformacion />
       </div>
     </div>
 
-    <br />
-
-    <div v-if="datosCargadosPractica">
-      <h2>GRUPOS DE PRÁCTICA</h2>
-      <br />
-      <TablaGruposAsignatura
-        :datosTabla="this.gruposPractica"
-      ></TablaGruposAsignatura>
-    </div>
     <div v-else>
       <ProcesoCarga />
     </div>
@@ -69,6 +61,7 @@ import TablaGruposAsignatura from "./TablaGruposAsignatura.vue";
 import GraficoGruposAsignatura from "./GraficoGruposAsignatura.vue";
 import DatasetGraficoDonut from "../../components/DatasetGraficoDonut_Component.js";
 import ProcesoCarga from "../ProcesoCarga.vue";
+import NoExisteInformacion from "../NoExisteInformacion.vue";
 
 export default {
   name: "GruposAsignaturaScript",
@@ -76,6 +69,7 @@ export default {
     TablaGruposAsignatura,
     GraficoGruposAsignatura,
     ProcesoCarga,
+    NoExisteInformacion,
   },
   data() {
     return {
@@ -126,7 +120,7 @@ export default {
         this.datosGraficoTeoria.options.labels = listaNombreGrupo;
         this.datosGraficoTeoria.series = listaNumeroAlumnos;
 
-        if (this.gruposTeoria.length != 0) this.datosCargadosTeoria = true;
+        this.datosCargadosTeoria = true;
       });
       Grupos_Service.getGruposPractica(codigo_asignatura).then((response) => {
         this.gruposPractica = response.data;
@@ -165,7 +159,7 @@ export default {
         this.datosGraficoPractica.options.labels = listaNombreGrupo;
         this.datosGraficoPractica.series = listaNumeroAlumnos;
 
-        if (this.gruposPractica.length != 0) this.datosCargadosPractica = true;
+        this.datosCargadosPractica = true;
       });
     },
   },

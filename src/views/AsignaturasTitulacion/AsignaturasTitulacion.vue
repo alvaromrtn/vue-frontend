@@ -44,6 +44,12 @@ export default {
         (response) => {
           this.asignaturas = response.data;
 
+          this.asignaturas.sort((a, b) => {
+            if (a.codigoAsignatura < b.codigoAsignatura) return -1;
+
+            if (a.codigoAsignatura > b.codigoAsignatura) return 1;
+          });
+
           this.datosCargados = true;
         }
       );
